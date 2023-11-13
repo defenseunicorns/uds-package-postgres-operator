@@ -4,7 +4,7 @@ metadata:
   name: postgres-operator
   description: "A deployment of zalando postgres operator"
   # x-release-please-start-version
-  version: "0.1.2"
+  version: "0.1.4"
   # x-release-please-end
 
 components:

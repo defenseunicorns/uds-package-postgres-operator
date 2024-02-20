@@ -1,0 +1,21 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: acid
+---
+apiVersion: acid.zalan.do/v1
+kind: postgresql
+metadata:
+  name: pg-cluster
+  namespace: {{ .Release.Namespace }}
+spec:
+  teamId: "myteam"
+  volume:
+    size: 1Gi
+  numberOfInstances: 2
+  users:
+    myuser: []  # database owner
+  databases:
+    mydb: myuser
+  postgresql:
+    version: "13"

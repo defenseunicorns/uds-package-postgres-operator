@@ -1,0 +1,42 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: ServiceEntry
+metadata:
+  name: acid-minimal-cluster-service-entry
+  namespace: {{ .Release.Namespace }}
+spec:
+  hosts:
+  - pg-cluster-0.pg-cluster.acid.svc.cluster.local
+  - pg-cluster-1.pg-cluster.acid.svc.cluster.local
+  location: MESH_INTERNAL
+  ports:
+  - number: 5432
+    name: tcp-postgres
+    protocol: TCP
+  - number: 8008
+    name: tcp-patroni
+    protocol: TCP
+  resolution: NONE
+---
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: acid-dr
+  namespace: {{ .Release.Namespace }}
+spec:
+  host: pg-cluster-0.pg-cluster.acid.svc.cluster.local
+  trafficPolicy:
+    tls:
+      mode: ISTIO_MUTUAL
+      sni: pg-cluster-0.pg-cluster.acid.svc.cluster.local
+---
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: acid-dr-1
+  namespace: {{ .Release.Namespace }}
+spec:
+  host: pg-cluster-1.pg-cluster.acid.svc.cluster.local
+  trafficPolicy:
+    tls:
+      mode: ISTIO_MUTUAL
+      sni: pg-cluster-1.pg-cluster.acid.svc.cluster.local

@@ -1,0 +1,41 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/defenseunicorns/zarf/main/zarf.schema.json
+kind: ZarfPackageConfig
+metadata:
+  name: postgres-test
+  description: "A test deployment of zalando postgres"
+  version: 0.1.0
+
+components:
+  - name: postgres
+    required: true
+    manifests:
+      - name: postgres
+        files:
+          - postgres/postgres-svc.yaml
+          - postgres/postgres-minimal.yaml
+    actions:
+      onDeploy:
+        after:
+          - wait:
+              cluster:
+                kind: Postgresql
+                name: pg-cluster
+                namespace: acid
+                condition: "'{.status.PostgresClusterStatus}'=Running"
+  - name: db-seed
+    required: true
+    manifests:
+      - name: db-seed
+        files:
+          - postgres/db-seed.yaml
+    images:
+      - docker.io/postgres:13
+    actions:
+      onDeploy:
+        after:
+          - wait:
+              cluster:
+                kind: Job
+                name: db-seed-job
+                namespace: acid
+                condition: "'{.status.succeeded}'=1"

@@ -1,0 +1,23 @@
+apiVersion: uds.dev/v1alpha1
+kind: Package
+metadata:
+  name: postgres-operator
+  namespace: {{ .Release.Namespace }}
+spec:
+  network:
+    expose:
+      - service: gitlab-webservice-default
+        podLabels:
+          app: webservice
+        host: gitlab
+        gateway: tenant
+        port: 8181
+      - service: gitlab-registry
+        podLabels:
+          app: registry
+        host: registry
+        gateway: tenant
+        port: 5000
+    allow:
+      - direction: Ingress
+        remoteGenerated: IntraNamespace

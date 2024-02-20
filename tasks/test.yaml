@@ -1,0 +1,5 @@
+tasks:
+  - name: test
+    actions:
+      - description: Test deployment of a postgres instance
+        cmd: "./zarf package deploy ../build/zarf-package-postgres-test-* --confirm"

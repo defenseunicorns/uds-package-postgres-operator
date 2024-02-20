@@ -1,0 +1,21 @@
+variables:
+  - name: FLAVOR
+    default: "upstream"
+
+tasks:
+  - name: postgres-operator-test-bundle
+    description: Create the UDS bundle with Postgres Operator and its dependencies
+    actions:
+      - task: postgres-operator-package
+      - task: test-package
+      - cmd: uds create bundle --confirm --no-progress --architecture=${UDS_ARCH}
+
+  - name: postgres-operator-package
+    description: Create the UDS Postgres Operator Zarf Package
+    actions:
+      - cmd: zarf package create --confirm --no-progress --architecture=${ZARF_ARCHITECTURE} --flavor ${FLAVOR}
+
+  - name: test-package
+    description: Create the POstgres Operator test package
+    actions:
+      - cmd: zarf package create src/test --confirm --no-progress --architecture=${UDS_ARCH} --skip-sbom

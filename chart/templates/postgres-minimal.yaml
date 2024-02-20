@@ -1,21 +1,18 @@
-kind: Namespace
-apiVersion: v1
-metadata:
-  name: acid
----
+{{- if .Values.postgresql.enabled }}
 apiVersion: acid.zalan.do/v1
 kind: postgresql
 metadata:
   name: pg-cluster
   namespace: {{ .Release.Namespace }}
 spec:
-  teamId: "myteam"
+  teamId: {{ .Values.postgresql.teamId | quote }}
   volume:
-    size: 1Gi
-  numberOfInstances: 2
+    size: {{ .Values.postgresql.volume.size | quote }}
+  numberOfInstances: {{ .Values.postgresql.numberOfInstances }}
   users:
-    myuser: []  # database owner
+    {{- toYaml .Values.postgresql.users | nindent 4 }} # database owner
   databases:
-    mydb: myuser
+    {{- toYaml .Values.postgresql.databases | nindent 4 }}
   postgresql:
-    version: "13"
+    version: {{ .Values.postgresql.version | quote }}
+{{- end }}

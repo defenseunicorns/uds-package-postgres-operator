@@ -8,10 +8,10 @@ components:
   - name: postgres-operator
     required: true
     charts:
-      # - name: uds-postgres-operator-config
-      #   namespace: postgres-operator
-      #   version: 0.1.0
-      #   localPath: ../chart
+      - name: uds-postgres-operator-config
+        namespace: postgres
+        version: 0.1.0
+        localPath: ../chart
       - name: postgres-operator
         version: v1.10.1
         namespace: postgres-operator

@@ -1,3 +1,4 @@
+{{- if and .Values.postgresql.enabled (.Capabilities.APIVersions.Has "security.istio.io/v1beta1") }}
 apiVersion: networking.istio.io/v1alpha3
 kind: ServiceEntry
 metadata:
@@ -5,8 +6,8 @@ metadata:
   namespace: {{ .Release.Namespace }}
 spec:
   hosts:
-  - pg-cluster-0.pg-cluster.acid.svc.cluster.local
-  - pg-cluster-1.pg-cluster.acid.svc.cluster.local
+  - pg-cluster-0.pg-cluster.{{ .Release.Namespace }}.svc.cluster.local
+  - pg-cluster-1.pg-cluster.{{ .Release.Namespace }}.svc.cluster.local
   location: MESH_INTERNAL
   ports:
   - number: 5432
@@ -23,11 +24,11 @@ metadata:
   name: acid-dr
   namespace: {{ .Release.Namespace }}
 spec:
-  host: pg-cluster-0.pg-cluster.acid.svc.cluster.local
+  host: pg-cluster-0.pg-cluster.{{ .Release.Namespace }}.svc.cluster.local
   trafficPolicy:
     tls:
       mode: ISTIO_MUTUAL
-      sni: pg-cluster-0.pg-cluster.acid.svc.cluster.local
+      sni: pg-cluster-0.pg-cluster.{{ .Release.Namespace }}.svc.cluster.local
 ---
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
@@ -35,8 +36,9 @@ metadata:
   name: acid-dr-1
   namespace: {{ .Release.Namespace }}
 spec:
-  host: pg-cluster-1.pg-cluster.acid.svc.cluster.local
+  host: pg-cluster-1.pg-cluster.{{ .Release.Namespace }}.svc.cluster.local
   trafficPolicy:
     tls:
       mode: ISTIO_MUTUAL
-      sni: pg-cluster-1.pg-cluster.acid.svc.cluster.local
+      sni: pg-cluster-1.pg-cluster.{{ .Release.Namespace }}.svc.cluster.local
+{{- end }}

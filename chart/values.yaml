@@ -1,0 +1,13 @@
+postgresql:
+  enabled: true  # Set to false to not create the PostgreSQL resource
+  teamId: "uds"
+  volume:
+    size: "1Gi"
+  numberOfInstances: 2
+  users:
+    myuser: []  # database owner
+    # youruser: []  # database owner
+  databases:
+    mydb: myuser
+    yourdb: youruser
+  version: "13"

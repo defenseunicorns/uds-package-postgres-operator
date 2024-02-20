@@ -6,18 +6,18 @@ metadata:
 spec:
   network:
     expose:
-      - service: gitlab-webservice-default
+    # Template these out to allow for overrides
+      - service: pg-cluster-headless
         podLabels:
-          app: webservice
-        host: gitlab
+          cluster-name: pg-cluster
+        host: postgres
         gateway: tenant
-        port: 8181
-      - service: gitlab-registry
-        podLabels:
-          app: registry
-        host: registry
-        gateway: tenant
-        port: 5000
+        port: 5432
+        targetPort: 5432
     allow:
       - direction: Ingress
         remoteGenerated: IntraNamespace
+      - direction: Ingress
+        selector:
+          cluster-name: pg-cluster
+        remoteGenerated: Anywhere

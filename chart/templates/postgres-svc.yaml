@@ -1,3 +1,4 @@
+{{- if .Values.postgresql.enabled }}
 apiVersion: v1
 kind: Service
 metadata:
@@ -13,3 +14,4 @@ spec:
   type: ClusterIP
   selector:
     cluster-name: pg-cluster
+{{- end }}

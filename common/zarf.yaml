@@ -1,14 +1,14 @@
 kind: ZarfPackageConfig
 metadata:
-  name: uds-core-metrics-server-common
-  description: "UDS Metrics Server Common"
-  url: https://github.com/kubernetes-sigs/metrics-server
+  name: uds-postgres-operator-common
+  description: "UDS Postgres Operator Common"
+  url: https://github.com/zalando/postgres-operator
 
 components:
   - name: postgres-operator
     required: true
     charts:
-      - name: uds-postgres-operator-config
+      - name: uds-postgres-config
         namespace: postgres
         version: 0.1.0
         localPath: ../chart

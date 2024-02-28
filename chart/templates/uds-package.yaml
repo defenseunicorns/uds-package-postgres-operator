@@ -1,23 +1,29 @@
+{{- if .Values.postgresql.enabled }}
 apiVersion: uds.dev/v1alpha1
 kind: Package
 metadata:
-  name: postgres-operator
+  name: postgres
   namespace: {{ .Release.Namespace }}
 spec:
   network:
-    expose:
-    # Template these out to allow for overrides
-      - service: pg-cluster-headless
-        podLabels:
-          cluster-name: pg-cluster
-        host: postgres
-        gateway: tenant
-        port: 5432
-        targetPort: 5432
     allow:
       - direction: Ingress
         remoteGenerated: IntraNamespace
+      - direction: Egress
+        remoteGenerated: IntraNamespace
+      # Template ingress From out to allow for overrides
+      # - direction: Ingress
+      #   selector:
+      #     cluster-name: pg-cluster
+      #   remoteGenerated: Anywhere
+      {{- if .Values.postgresql.ingress }}
       - direction: Ingress
         selector:
           cluster-name: pg-cluster
-        remoteGenerated: Anywhere
+      {{ .Values.postgresql.ingress | toYaml | indent 4 }}
+      {{- end }}
+      - direction: Egress
+        selector:
+          cluster-name: pg-cluster  
+        remoteGenerated: KubeAPI
+{{- end }}

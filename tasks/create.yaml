@@ -8,14 +8,20 @@ tasks:
     actions:
       - task: postgres-operator-package
       - task: test-package
+      - task: dev-namespaces
       - cmd: uds create bundle --confirm --no-progress --architecture=${UDS_ARCH}
 
   - name: postgres-operator-package
     description: Create the UDS Postgres Operator Zarf Package
     actions:
-      - cmd: zarf package create --confirm --no-progress --architecture=${ZARF_ARCHITECTURE} --flavor ${FLAVOR}
+      - cmd: uds zarf package create --confirm --no-progress --architecture=${UDS_ARCH} --flavor ${FLAVOR}
 
   - name: test-package
-    description: Create the POstgres Operator test package
+    description: Create the Postgres Operator test package
     actions:
-      - cmd: zarf package create src/test --confirm --no-progress --architecture=${UDS_ARCH} --skip-sbom
+      - cmd: uds zarf package create src/test --confirm --no-progress --architecture=${UDS_ARCH} --skip-sbom
+
+  - name: dev-namespaces
+    description: Create the namespaces for secrets
+    actions:
+      - cmd: uds zarf package create src/namespace --confirm --no-progress --architecture=${UDS_ARCH} --skip-sbom

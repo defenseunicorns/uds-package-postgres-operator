@@ -6,7 +6,24 @@ metadata:
   version: 0.1.0
 
 components:
-  - name: postgres
+  - name: test-cross-namespace-chart-deployed-postgres
+    required: true
+    manifests:
+      - name: db-seed
+        files:
+          - postgres/db-seed-cross-namespace.yaml
+    images:
+      - docker.io/postgres:13
+    actions:
+      onDeploy:
+        after:
+          - wait:
+              cluster:
+                kind: Job
+                name: db-seed-job
+                namespace: gitlab
+                condition: "'{.status.succeeded}'=1"
+  - name: deploy-postgres-standalone
     required: true
     manifests:
       - name: postgres
@@ -22,7 +39,7 @@ components:
                 name: pg-cluster
                 namespace: acid
                 condition: "'{.status.PostgresClusterStatus}'=Running"
-  - name: db-seed
+  - name: test-standalone-postgres-deployment
     required: true
     manifests:
       - name: db-seed

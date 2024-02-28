@@ -7,12 +7,21 @@ metadata:
   # x-release-please-end
 
 packages:
+  - name: dev-namespaces
+    path: ../
+    ref: 0.1.0
   - name: postgres-operator
     path: ../
     # x-release-please-start-version
     ref: 1.10.1-uds.0
     # x-release-please-end
+    overrides:
+      postgres-operator:
+        uds-postgres-config:
+          variables:
+            - name: POSTGRESQL
+              description: "Configure postgres using CRs via the uds-postgres-config chart"
+              path: postgresql
   - name: postgres-test
     path: ../
-    # x-release-please-start-version
     ref: 0.1.0

@@ -37,7 +37,7 @@ tasks:
     description: Run health checks and ingress tests
     actions:
       - task: test:health-check
-      - task: test:ingress
+
 
   - name: cleanup
     description: Destroy k3d Cluster

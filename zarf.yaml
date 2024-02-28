@@ -25,6 +25,8 @@ components:
       flavor: registry1
       cluster:
         architecture: amd64
+    import:
+      path: common
     charts:
       - name: postgres-operator
         valuesFiles:

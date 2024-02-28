@@ -3,3 +3,12 @@ tasks:
     actions:
       - description: Test deployment of a postgres instance
         cmd: "./zarf package deploy ../build/zarf-package-postgres-test-* --confirm"
+  - name: health-check
+    actions:
+      - description: Postgresql Cluster Status
+        wait:
+          cluster:
+            kind: Postgresql
+            name: pg-cluster
+            namespace: acid
+            condition: "'{.status.PostgresClusterStatus}'=Running"

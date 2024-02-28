@@ -11,11 +11,6 @@ spec:
         remoteGenerated: IntraNamespace
       - direction: Egress
         remoteGenerated: IntraNamespace
-      # Template ingress From out to allow for overrides
-      # - direction: Ingress
-      #   selector:
-      #     cluster-name: pg-cluster
-      #   remoteGenerated: Anywhere
       {{- if .Values.postgresql.ingress }}
       - direction: Ingress
         selector:

@@ -3,8 +3,6 @@
 > [!WARNING]  
 > uds-package-postgres-operator is in early alpha and is not ready for general consumption.
 
-[Short description]
-
 ## Prerequisites
 
 - [K3D](https://k3d.io/) for dev & test environments or any [CNCF Certified Kubernetes Cluster](https://www.cncf.io/training/certification/software-conformance/#logos) for production environments.
@@ -17,6 +15,8 @@
 | ------ | ----------- | ---------------- |
 | upstream | Uses upstream images within the package. | `uds zarf package create . -f upstream` |
 | registry1 | Uses images from registry1.dso.mil within the package. | `uds zarf package create . -f registry1` |
+
+Note: the registry1 flavor uses `ghcr.io/zalando/spilo-15:3.0-p1` published from GHCR as there is not a spilo image in Iron Bank
 
 ## Releases
 

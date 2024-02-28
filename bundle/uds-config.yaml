@@ -12,8 +12,8 @@ variables:
         mattermost.mattermost: []  # database owner
       databases:
         gitlabdb: gitlab.gitlab
-        mattermostdb: sonarqube.sonarqube
-        sonarqubedb: mattermost.mattermost
+        mattermostdb: mattermost.mattermost
+        sonarqubedb: sonarqube.sonarqube
       version: "13"
       ingress:
         remoteGenerated: Anywhere

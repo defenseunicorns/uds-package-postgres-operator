@@ -41,12 +41,12 @@ spec:
               value: pg-cluster
             - name: DB_NAME
               value: mydb
-          volumeMounts:
-            - name: seed-data
-              mountPath: /seed.sql
-              subPath: seed.sql
-          volumes:
-            - name: seed-data
-              configMap:
-                name: db-seed-script
+      volumeMounts:
+        - name: seed-data
+          mountPath: /seed.sql
+          subPath: seed.sql
+      volumes:
+        - name: seed-data
+          configMap:
+            name: db-seed-script
       restartPolicy: OnFailure

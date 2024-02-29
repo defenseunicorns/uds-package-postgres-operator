@@ -41,10 +41,10 @@ spec:
               value: pg-cluster.postgres.svc.cluster.local
             - name: DB_NAME
               value: gitlabdb
-          volumeMounts:
-            - name: seed-data
-              mountPath: /seed.sql
-              subPath: seed.sql
+      volumeMounts:
+        - name: seed-data
+          mountPath: /seed.sql
+          subPath: seed.sql
       volumes:
         - name: seed-data
           configMap:

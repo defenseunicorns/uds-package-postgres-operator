@@ -15,7 +15,7 @@ on:
     # milestoned is added here as a workaround for release-please not triggering PR workflows (PRs should be added to a milestone to trigger the workflow).
     types: [milestoned, opened, reopened, synchronize]
 
-    
+
 # Permissions for the GITHUB_TOKEN used by the workflow.
 permissions:
   id-token: write # Needed for OIDC-related operations.
@@ -28,7 +28,21 @@ defaults:
     shell: bash -e -o pipefail {0} # Ensures that scripts fail on error and pipefail is set.
 
 jobs:
+  lint-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+      - name: Set up Homebrew
+        uses: Homebrew/actions/setup-homebrew@master
+      - name: Install UDS CLI
+        shell: bash
+        # renovate: datasource=github-tags depName=defenseunicorns/uds-cli versioning=semver
+        run: brew install defenseunicorns/tap/uds@0.9.0
+      - name: Run Formatting Checks
+        run: uds run lint-check
+        
   deploy:
+    needs: lint-check
     runs-on: "ubuntu-latest"
     timeout-minutes: 20
     strategy:
@@ -42,7 +56,7 @@ jobs:
 
       - name: Environment setup
         uses: defenseunicorns/uds-common/.github/actions/setup@417b9c2bc088f664c616c9929a2b3ce448d251f7
-      
+
       - name: Iron Bank Login
         if: ${{ matrix.flavor == 'registry1' }}
         run: uds zarf tools registry login -u "${{secrets.IRON_BANK_ROBOT_USERNAME}}" -p "${{secrets.IRON_BANK_ROBOT_PASSWORD}}" registry1.dso.mil
@@ -56,7 +70,7 @@ jobs:
 
       - name: Setup cluster
         run: uds run setup-cluster
-      
+
       - name: Deploy test bundle
         run: uds run deploy-test-bundle
 

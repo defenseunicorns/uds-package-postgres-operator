@@ -26,15 +26,9 @@ The released packages can be found in [ghcr](https://github.com/defenseunicorns/
 
 *For local dev, this requires installing [uds-cli](https://github.com/defenseunicorns/uds-cli?tab=readme-ov-file#install)
 
-| Task | Description | Example |
-| ---- | ----------- | ------- |
-| setup-cluster | Uses the `k3d-core-istio` bundle to create a cluster for testing against | `uds run setup-cluster` |
-| create-package | Creates just the Postgres Operator package | `uds run create-package --set FLAVOR=<flavor>` |
-| create-test-bundle | Creates Postgres Operator and Postgres Operator test packages and then bundles them | `uds run create-test-bundle` |
-| deploy-package | Deploy Postgres Operator package only | `uds run deploy-package` |
-| deploy-test-bundle | Deploy Postgres Operator and Postgres Operator dependency bundle | `uds run deploy-test-bundle` |
-| test-package | Run checks against a deployed package or bundle | `uds run test-package` |
-| cleanup | Teardown the cluster | `uds run cleanup` |
+After installing uds-cli, for a list of available tasks that can be run in this repository execute the following command:
+
+`uds run --list`
 
 ## Contributing
 

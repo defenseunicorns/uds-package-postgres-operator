@@ -10,7 +10,7 @@ variables:
     # x-release-please-start-version
     default: "1.10.1-uds.0"
     # x-release-please-end
-  
+
   - name: FLAVOR
     default: "registry1"
 

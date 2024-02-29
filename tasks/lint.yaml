@@ -1,0 +1,8 @@
+tasks:
+  - name: check
+    description: "Run linting checks"
+    actions:
+      - description: install yamllint deps
+        cmd: CMD=pip && which $CMD || CMD=pip3 && $CMD install yamllint
+      - description: yaml lint
+        cmd: yamllint . -c .yamllint --no-warnings

@@ -1,6 +1,6 @@
 postgresql:
   enabled: false
-  
+
 #   teamId: "uds"
 #   volume:
 #     size: "1Gi"

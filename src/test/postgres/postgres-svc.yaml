@@ -6,10 +6,10 @@ metadata:
 spec:
   clusterIP: None
   ports:
-  - name: tcp-postgresql
-    port: 5432
-    protocol: TCP
-    targetPort: 5432
+    - name: tcp-postgresql
+      port: 5432
+      protocol: TCP
+      targetPort: 5432
   type: ClusterIP
   selector:
     cluster-name: pg-cluster

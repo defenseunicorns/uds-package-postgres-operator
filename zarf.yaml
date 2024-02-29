@@ -55,4 +55,3 @@ components:
       - registry.opensource.zalan.do/acid/pgbouncer:master-27
       # Docker image that provides PostgreSQL and Patroni bundled together for PostgreSQL HA
       - ghcr.io/zalando/spilo-15:3.0-p1
-

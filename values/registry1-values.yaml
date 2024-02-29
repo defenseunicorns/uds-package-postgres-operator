@@ -1,6 +1,6 @@
 image:
   registry: registry1.dso.mil
-  repository: ironbank/opensource/zalando/postgres-operator:v1.10.1
+  repository: ironbank/opensource/zalando/postgres-operator
 configConnectionPooler:
   connection_pooler_image: "registry1.dso.mil/ironbank/opensource/zalando/pgbouncer:1.21.0"
 configLogicalBackup:

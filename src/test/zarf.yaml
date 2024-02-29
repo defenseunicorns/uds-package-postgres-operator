@@ -16,6 +16,14 @@ components:
       - docker.io/postgres:13
     actions:
       onDeploy:
+        before:
+          - wait:
+              cluster:
+                kind: Postgresql
+                name: pg-cluster
+                namespace: postgres
+                condition: "'{.status.PostgresClusterStatus}'=Running"
+            maxTotalSeconds: 600
         after:
           - wait:
               cluster:
@@ -23,6 +31,8 @@ components:
                 name: db-seed-job
                 namespace: gitlab
                 condition: "'{.status.succeeded}'=1"
+
+
   - name: deploy-postgres-standalone
     required: true
     manifests:
@@ -39,6 +49,7 @@ components:
                 name: pg-cluster
                 namespace: acid
                 condition: "'{.status.PostgresClusterStatus}'=Running"
+            maxTotalSeconds: 600
   - name: test-standalone-postgres-deployment
     required: true
     manifests:

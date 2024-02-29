@@ -44,6 +44,10 @@ jobs:
         if: ${{ matrix.flavor == 'registry1' }}
         run: uds zarf tools registry login -u "${{secrets.IRON_BANK_ROBOT_USERNAME}}" -p "${{secrets.IRON_BANK_ROBOT_PASSWORD}}" registry1.dso.mil
 
+      - name: Clean Runner
+        if: ${{ matrix.flavor == 'registry1' }}
+        uses: defenseunicorns/uds-common/.github/actions/clean-runner@417b9c2bc088f664c616c9929a2b3ce448d251f7
+
       - name: Create test bundle
         run: uds run create-test-bundle --set FLAVOR=${{ matrix.flavor }}
 

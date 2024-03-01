@@ -15,7 +15,7 @@ spec:
       - direction: Ingress
         selector:
           cluster-name: pg-cluster
-      {{ .Values.postgresql.ingress | toYaml | indent 4 }}
+        {{- .Values.postgresql.ingress | toYaml | nindent 6 }}
       {{- end }}
       - direction: Egress
         selector:

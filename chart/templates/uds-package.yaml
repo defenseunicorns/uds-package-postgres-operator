@@ -11,14 +11,15 @@ spec:
         remoteGenerated: IntraNamespace
       - direction: Egress
         remoteGenerated: IntraNamespace
-      {{- if .Values.postgresql.ingress }}
+    {{- if .Values.postgresql.ingress }}
       - direction: Ingress
         selector:
           cluster-name: pg-cluster
-        {{- .Values.postgresql.ingress | toYaml | nindent 6 }}
+        {{- .Values.postgresql.ingress | toYaml | nindent 8 }}
       {{- end }}
       - direction: Egress
         selector:
           cluster-name: pg-cluster  
         remoteGenerated: KubeAPI
 {{- end }}
+

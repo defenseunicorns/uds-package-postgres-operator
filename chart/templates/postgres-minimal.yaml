@@ -1,0 +1,18 @@
+{{- if .Values.postgresql.enabled }}
+apiVersion: acid.zalan.do/v1
+kind: postgresql
+metadata:
+  name: pg-cluster
+  namespace: {{ .Release.Namespace }}
+spec:
+  teamId: {{ .Values.postgresql.teamId | quote }}
+  volume:
+    size: {{ .Values.postgresql.volume.size | quote }}
+  numberOfInstances: {{ .Values.postgresql.numberOfInstances }}
+  users:
+    {{- toYaml .Values.postgresql.users | nindent 4 }} # database owner
+  databases:
+    {{- toYaml .Values.postgresql.databases | nindent 4 }}
+  postgresql:
+    version: {{ .Values.postgresql.version | quote }}
+{{- end }}

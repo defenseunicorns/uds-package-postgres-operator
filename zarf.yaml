@@ -1,17 +1,56 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/defenseunicorns/zarf/main/zarf.schema.json
-
 kind: ZarfPackageConfig
 metadata:
-  name: example
-  description: "Example description"
+  name: postgres-operator
+  description: "A deployment of zalando postgres operator"
+  url: https://github.com/zalando/postgres-operator
   # x-release-please-start-version
-  version: "0.0.1"
+  version: "1.10.1-uds.0"
   # x-release-please-end
 
-
 components:
-  - name: test
-    actions:
-      onCreate:
-        after:
-        - cmd: echo "What can Doug do for you?"
+  # CRD lifecycle is managed outside of the main chart to support upgrades
+  - name: crds
+    required: true
+    manifests:
+      - name: crds
+        files:
+          - https://github.com/zalando/postgres-operator/raw/v1.10.1/charts/postgres-operator/crds/operatorconfigurations.yaml
+          - https://github.com/zalando/postgres-operator/raw/v1.10.1/charts/postgres-operator/crds/postgresqls.yaml
+          - https://github.com/zalando/postgres-operator/raw/v1.10.1/charts/postgres-operator/crds/postgresteams.yaml
+
+  - name: postgres-operator
+    required: true
+    only:
+      flavor: registry1
+      cluster:
+        architecture: amd64
+    import:
+      path: common
+    charts:
+      - name: postgres-operator
+        valuesFiles:
+          - ./values/registry1-values.yaml
+    images:
+      # Iron Bank
+      - registry1.dso.mil/ironbank/opensource/zalando/postgres-operator:v1.10.1
+      - registry1.dso.mil/ironbank/opensource/zalando/logical-backup:v1.8.2
+      - registry1.dso.mil/ironbank/opensource/zalando/pgbouncer:1.21.0
+      # Docker image that provides PostgreSQL and Patroni bundled together for PostgreSQL HA
+      - ghcr.io/zalando/spilo-15:3.0-p1
+
+  - name: postgres-operator
+    required: true
+    only:
+      flavor: upstream
+    import:
+      path: common
+    charts:
+      - name: postgres-operator
+        valuesFiles:
+          - ./values/upstream-values.yaml
+    images:
+      - registry.opensource.zalan.do/acid/postgres-operator:v1.10.1
+      - registry.opensource.zalan.do/acid/logical-backup:v1.10.1
+      - registry.opensource.zalan.do/acid/pgbouncer:master-27
+      # Docker image that provides PostgreSQL and Patroni bundled together for PostgreSQL HA
+      - ghcr.io/zalando/spilo-15:3.0-p1

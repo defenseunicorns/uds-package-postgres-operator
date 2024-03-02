@@ -1,0 +1,19 @@
+variables:
+  postgres-operator:
+    postgresql:
+      enabled: true  # Set to false to not create the PostgreSQL resource
+      teamId: "uds"
+      volume:
+        size: "10Gi"
+      numberOfInstances: 2
+      users:
+        gitlab.gitlab: []  # database owner
+        sonarqube.sonarqube: []  # database owner
+        mattermost.mattermost: []  # database owner
+      databases:
+        gitlabdb: gitlab.gitlab
+        mattermostdb: mattermost.mattermost
+        sonarqubedb: sonarqube.sonarqube
+      version: "13"
+      ingress:
+        remoteGenerated: Anywhere

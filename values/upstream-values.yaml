@@ -1,0 +1,9 @@
+image:
+  registry: registry.opensource.zalan.do
+  repository: acid/postgres-operator
+configConnectionPooler:
+  connection_pooler_image: "registry.opensource.zalan.do/acid/pgbouncer:master-27"
+configLogicalBackup:
+  logical_backup_docker_image: "registry.opensource.zalan.do/acid/logical-backup:v1.10.1"
+configGeneral:
+  docker_image: "ghcr.io/zalando/spilo-15:3.0-p1"

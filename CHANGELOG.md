@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.10.1-uds.1](https://github.com/defenseunicorns/uds-package-postgres-operator/compare/v1.10.1-uds.0...v1.10.1-uds.1) (2024-03-04)
+
+
+### Miscellaneous
+
+* release 1.10.1-uds.1 ([#5](https://github.com/defenseunicorns/uds-package-postgres-operator/issues/5)) ([5ebac86](https://github.com/defenseunicorns/uds-package-postgres-operator/commit/5ebac865bd256ec9a3e5dc9518acf5843b707abe))
+
 ## [1.10.1-uds.0](https://github.com/defenseunicorns/uds-package-postgres-operator/compare/v1.10.1-uds.0...v1.10.1-uds.0) (2024-03-02)
 
 

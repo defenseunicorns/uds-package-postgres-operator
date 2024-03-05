@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.10.1-uds.4](https://github.com/defenseunicorns/uds-package-postgres-operator/compare/v1.10.1-uds.3...v1.10.1-uds.4) (2024-03-05)
+
+
+### ci
+
+* fix oci publish issue ([#11](https://github.com/defenseunicorns/uds-package-postgres-operator/issues/11)) ([6ab7735](https://github.com/defenseunicorns/uds-package-postgres-operator/commit/6ab7735dce5b61de9f4589f51ad5c7a14397e8d4))
+
 ## [1.10.1-uds.3](https://github.com/defenseunicorns/uds-package-postgres-operator/compare/v1.10.1-uds.2...v1.10.1-uds.3) (2024-03-04)
 
 

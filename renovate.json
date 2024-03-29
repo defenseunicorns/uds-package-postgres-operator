@@ -7,19 +7,19 @@
       ":semanticCommits",
       ":semanticCommitTypeAll(chore)"
     ],
-    "branchConcurrentLimit": 0,
-    "prConcurrentLimit": 0,
-    "prHourlyLimit": 0,
-    "separateMajorMinor": false,
-    "regexManagers":[
-    ],
     "packageRules": [
-      { 
-        "matchFileNames": [".github/**"],
-        "excludePackageNames": ["defenseunicorns/uds-cli"],
-        "groupName": "githubactions",
-        "commitMessageTopic": "githubactions",
-        "pinDigests": true
+      {
+        "groupName": "Postgres Support Dependencies",
+        "labels": ["support-deps"],
+        "commitMessageTopic": "support-deps",
+        "packagePatterns": ["*"]
+      },
+      {
+        "groupName": "Postgres Package Dependencies",
+        "labels": ["package-deps"],
+        "commitMessageTopic": "package-deps",
+        "registryUrls": ["https://registry1.dso.mil"],
+        "matchDatasources": ["docker", "helm", "git-tags"]
       }
     ]
   }

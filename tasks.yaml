@@ -1,54 +1,62 @@
 includes:
   - cleanup: ./tasks/cleanup.yaml
-  - create: ./tasks/create.yaml
-  - deploy: https://raw.githubusercontent.com/defenseunicorns/uds-common-tasks/v0.2.1/tasks/deploy.yaml
-  - setup: https://raw.githubusercontent.com/defenseunicorns/uds-common-tasks/v0.2.1/tasks/setup.yaml
+  - dependencies: ./tasks/dependencies.yaml
   - test: ./tasks/test.yaml
-  - lint: ./tasks/lint.yaml
+  - create: https://raw.githubusercontent.com/defenseunicorns/uds-common/v0.3.3/tasks/create.yaml
+  - lint: https://raw.githubusercontent.com/defenseunicorns/uds-common/v0.3.3/tasks/lint.yaml
+  - pull: https://raw.githubusercontent.com/defenseunicorns/uds-common/v0.3.3/tasks/pull.yaml
+  - deploy: https://raw.githubusercontent.com/defenseunicorns/uds-common/v0.3.3/tasks/deploy.yaml
+  - setup: https://raw.githubusercontent.com/defenseunicorns/uds-common-tasks/v0.3.3/tasks/setup.yaml
 
 tasks:
   - name: default
     description: Create K3D Cluster with UDS-Core-Istio + Zalando Postgres Operator
     actions:
-      - task: create-test-bundle
-      - task: setup-cluster
-      - task: deploy-test-bundle
-
-  - name: setup-cluster
-    description: Deploy k3d cluster using uds-common-tasks
-    actions:
+      - task: create-pg-test-bundle
       - task: setup:k3d-test-cluster
-
-  - name: create-package
-    description: Create UDS Poostgres Operator Package, No dependencies included
-    actions:
-      - task: create:postgres-operator-package
-
-  - name: create-test-bundle
-    description: Create UDS Postgres Operator bundle with dependencies
-    actions:
-      - task: create:postgres-operator-test-bundle
-
-  - name: deploy-test-bundle
-    description: Deploy UDS Postgres Operator bundle with dependencies using uds-common-tasks
-    actions:
       - task: deploy:test-bundle
 
+  - name: create-pg-package
+    description: Create UDS Postgres Operator Package, No dependencies included
+    actions:
+      - task: create:package
+        with:
+          options: "--skip-sbom"
+
+  - name: create-pg-test-bundle
+    description: Create UDS Postgres Operator bundle with dependencies
+    actions:
+      - task: create-pg-package
+      - task: dependencies:create
+      - task: create:test-bundle
+
+  - name: create-pg-latest-release-bundle
+    description: Create UDS Postgres Operator bundle based on the latest release
+    actions:
+      - task: pull:latest-package-release
+        with:
+          spoof_release: "true"
+      - task: dependencies:create
+      - task: create:test-bundle
+
+# CI will execute the following (via uds-common/.github/actions/test) so they need to be here with these names
+
   - name: test-package
-    description: Run health checks and ingress tests
+    description: Test the health of a Postgres Operator deployment
     actions:
+      - task: create-pg-test-bundle
+      - task: setup:k3d-test-cluster
+      - task: deploy:test-bundle
       - task: test:health-check
+      - task: test:create-dbs
 
-  - name: cleanup
-    description: Destroy k3d Cluster
+  - name: test-upgrade
+    description: Test an upgrade from the latest released package to the current branch
     actions:
-      - task: cleanup:cluster
-
-  - name: cleanup-bundle
-    description: Remove the Deployed UDS Postgres Operator Bundle
-    actions:
-      - task: cleanup:bundle
-
-  - name: lint-check
-    actions:
-      - task: lint:check
+      - task: create-pg-latest-release-bundle
+      - task: setup:k3d-test-cluster
+      - task: deploy:test-bundle
+      - task: create-pg-test-bundle
+      - task: deploy:test-bundle
+      - task: test:health-check
+      - task: test:create-dbs

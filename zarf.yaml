@@ -50,7 +50,7 @@ components:
           - ./values/upstream-values.yaml
     images:
       - registry.opensource.zalan.do/acid/postgres-operator:v1.10.1
-      - registry.opensource.zalan.do/acid/logical-backup:v1.10.1
+      - registry.opensource.zalan.do/acid/logical-backup:8765928
       - registry.opensource.zalan.do/acid/pgbouncer:master-27
       # Docker image that provides PostgreSQL and Patroni bundled together for PostgreSQL HA
       - ghcr.io/zalando/spilo-15:3.0-p1

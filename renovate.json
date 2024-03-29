@@ -18,7 +18,6 @@
         "groupName": "Postgres Package Dependencies",
         "labels": ["package-deps"],
         "commitMessageTopic": "package-deps",
-        "registryUrls": ["https://registry1.dso.mil"],
         "matchDatasources": ["docker", "helm", "git-tags"]
       }
     ]

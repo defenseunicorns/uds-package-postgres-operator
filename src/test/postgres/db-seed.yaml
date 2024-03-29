@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: db-seed
-          image: docker.io/postgres:13
+          image: docker.io/postgres:16
           command:
             - sh
             - -c

@@ -8,7 +8,7 @@ on:
 jobs:
   run-test:
     name: ${{ matrix.type }} ${{ matrix.flavor }}
-    runs-on: "ubuntu-latest"
+    runs-on: ubuntu-latest
     timeout-minutes: 20
     strategy:
       matrix:

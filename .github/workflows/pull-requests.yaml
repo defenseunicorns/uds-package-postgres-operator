@@ -55,7 +55,7 @@ jobs:
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
 
       - name: Environment setup
-        uses: defenseunicorns/uds-common/.github/actions/setup@417b9c2bc088f664c616c9929a2b3ce448d251f7
+        uses: defenseunicorns/uds-common/.github/actions/setup@264ec430c4079129870820e70c4439f3f3d57cbc
 
       - name: Iron Bank Login
         if: ${{ matrix.flavor == 'registry1' }}
@@ -63,7 +63,7 @@ jobs:
 
       - name: Clean Runner
         if: ${{ matrix.flavor == 'registry1' }}
-        uses: defenseunicorns/uds-common/.github/actions/clean-runner@417b9c2bc088f664c616c9929a2b3ce448d251f7
+        uses: defenseunicorns/uds-common/.github/actions/clean-runner@264ec430c4079129870820e70c4439f3f3d57cbc
 
       - name: Create test bundle
         run: uds run create-test-bundle --set FLAVOR=${{ matrix.flavor }}
@@ -79,6 +79,6 @@ jobs:
 
       - name: Save logs
         if: always()
-        uses: defenseunicorns/uds-common/.github/actions/save-logs@417b9c2bc088f664c616c9929a2b3ce448d251f7
+        uses: defenseunicorns/uds-common/.github/actions/save-logs@264ec430c4079129870820e70c4439f3f3d57cbc
         with:
           suffix: '${{ matrix.flavor }}-${{ github.run_id }}-${{ github.run_attempt }}'

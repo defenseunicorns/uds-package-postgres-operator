@@ -1,7 +1,7 @@
 # uds-package-postgres-operator
 
 > [!WARNING]  
-> uds-package-postgres-operator is in early alpha and is not ready for general consumption.
+> `uds-package-postgres-operator` is in early alpha and is not ready for general consumption.
 
 ## Prerequisites
 

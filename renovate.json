@@ -19,6 +19,13 @@
         "labels": ["package-deps"],
         "commitMessageTopic": "package-deps",
         "matchDatasources": ["docker", "helm", "git-tags"]
+      },
+      {
+        "groupName": "Postgres Package Dependencies",
+        "labels": ["package-deps"],
+        "commitMessageTopic": "package-deps",
+        "matchPackageNames": ["registry.opensource.zalan.do/acid/logical-backup", "registry.opensource.zalan.do/acid/postgres-operator"],
+        "allowedVersions": "/v.+/"
       }
     ]
   }

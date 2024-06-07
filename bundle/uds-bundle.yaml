@@ -3,7 +3,7 @@ metadata:
   name: postgres-operator-test
   description: A UDS bundle for deploying Zalando Postgres Operator and on a development cluster
   # x-release-please-start-version
-  version: 1.11.0-uds.0
+  version: 1.11.0-uds.1
   # x-release-please-end
 
 packages:
@@ -13,7 +13,7 @@ packages:
   - name: postgres-operator
     path: ../
     # x-release-please-start-version
-    ref: 1.11.0-uds.0
+    ref: 1.11.0-uds.1
     # x-release-please-end
     overrides:
       postgres-operator:

@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.11.0-uds.1](https://github.com/defenseunicorns/uds-package-postgres-operator/compare/v1.11.0-uds.0...v1.11.0-uds.1) (2024-06-07)
+
+
+### Features
+
+* add wait for PGO package CR readiness ([#32](https://github.com/defenseunicorns/uds-package-postgres-operator/issues/32)) ([1d8056a](https://github.com/defenseunicorns/uds-package-postgres-operator/commit/1d8056ab7ca35f15a7870055829f6ad28998a2d2))
+
+
+### Miscellaneous
+
+* change image refs to support multi arch ([#33](https://github.com/defenseunicorns/uds-package-postgres-operator/issues/33)) ([963a962](https://github.com/defenseunicorns/uds-package-postgres-operator/commit/963a9629fb5392b549544fdd5340fbca0a3f1d2c))
+* **deps:** update postgres support dependencies ([#24](https://github.com/defenseunicorns/uds-package-postgres-operator/issues/24)) ([e08e679](https://github.com/defenseunicorns/uds-package-postgres-operator/commit/e08e67942f8c502a3819c15be5eb35407b53c7de))
+* **deps:** update postgres support dependencies ([#26](https://github.com/defenseunicorns/uds-package-postgres-operator/issues/26)) ([7d02d31](https://github.com/defenseunicorns/uds-package-postgres-operator/commit/7d02d3171cb02b69e515f56199de9ae12a43eb0f))
+* fix the allowed versions of postgres ([#28](https://github.com/defenseunicorns/uds-package-postgres-operator/issues/28)) ([4839d50](https://github.com/defenseunicorns/uds-package-postgres-operator/commit/4839d5080189428a4b8d977fb718c3b9f6ba3638))
+
 ## [1.11.0-uds.0](https://github.com/defenseunicorns/uds-package-postgres-operator/compare/v1.10.1-uds.5...v1.11.0-uds.0) (2024-04-05)
 
 

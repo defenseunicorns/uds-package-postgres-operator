@@ -6,5 +6,5 @@ tasks:
 
   - name: bundle
     actions:
-      - description: Remove the Deployed UDS Gitlab Bundle
+      - description: Remove the Deployed UDS Bundle
         cmd: uds remove ./bundle/uds-bundle-postgres-operator-test*.tar.zst --confirm --no-progress

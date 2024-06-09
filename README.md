@@ -1,8 +1,5 @@
 # uds-package-postgres-operator
 
-> [!WARNING]  
-> `uds-package-postgres-operator` is in early alpha and is not ready for general consumption.
-
 ## Prerequisites
 
 - [K3D](https://k3d.io/) for dev & test environments or any [CNCF Certified Kubernetes Cluster](https://www.cncf.io/training/certification/software-conformance/#logos) for production environments.

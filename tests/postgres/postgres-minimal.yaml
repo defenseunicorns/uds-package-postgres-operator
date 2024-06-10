@@ -2,6 +2,8 @@ kind: Namespace
 apiVersion: v1
 metadata:
   name: acid
+  labels:
+    istio-injection: enabled
 ---
 apiVersion: acid.zalan.do/v1
 kind: postgresql

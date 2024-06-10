@@ -1,24 +1,19 @@
-{{- if .Values.postgresql.enabled }}
 apiVersion: uds.dev/v1alpha1
 kind: Package
 metadata:
-  name: postgres
-  namespace: {{ .Release.Namespace }}
+  name: postgres-operator
+  namespace: postgres-operator
 spec:
   network:
     allow:
-      - direction: Ingress
-        remoteGenerated: IntraNamespace
       - direction: Egress
-        remoteGenerated: IntraNamespace
-      {{- if .Values.postgresql.ingress }}
-      - direction: Ingress
         selector:
+          app.kubernetes.io/name: postgres-operator
+        remoteNamespace: {{ .Release.Namespace }}
+        remoteSelector:
           cluster-name: pg-cluster
-        {{- .Values.postgresql.ingress | toYaml | nindent 8 }}
-      {{- end }}
+    
       - direction: Egress
         selector:
-          cluster-name: pg-cluster  
+          app.kubernetes.io/name: postgres-operator
         remoteGenerated: KubeAPI
-{{- end }}

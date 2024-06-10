@@ -38,6 +38,14 @@ tasks:
       - task: dependencies:create
       - task: create:test-bundle
 
+  - name: dev
+    description: Deploy Valkey on existing cluster
+    actions:
+      - task: create-pg-package
+      - task: dependencies:create
+      - task: create-pg-test-bundle
+      - task: deploy:test-bundle
+
 # CI will execute the following (via uds-common/.github/actions/test) so they need to be here with these names
 
   - name: test-package

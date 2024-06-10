@@ -2,3 +2,5 @@ kind: Namespace
 apiVersion: v1
 metadata:
   name: mattermost
+  labels:
+    istio-injection: enabled

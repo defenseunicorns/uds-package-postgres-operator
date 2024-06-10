@@ -57,6 +57,10 @@ jobs:
           flavor: ${{ matrix.flavor }}
           type: ${{ matrix.type }}
 
+      - name: Debug Output
+        if: ${{ always() }}
+        uses: defenseunicorns/uds-common/.github/actions/debug-output@11e591f2ec7d158923d973c85097ce28a5f55db4 # v0.4.5
+
       - name: Save logs
         if: always()
         uses: defenseunicorns/uds-common/.github/actions/save-logs@11e591f2ec7d158923d973c85097ce28a5f55db4 # v0.4.5

@@ -6,14 +6,32 @@ metadata:
 spec:
   network:
     allow:
+      {{- if .Values.postgresql.enabled }}
       - direction: Egress
         selector:
           app.kubernetes.io/name: postgres-operator
         remoteNamespace: {{ .Release.Namespace }}
         remoteSelector:
           cluster-name: pg-cluster
+      {{- end }}
 
       - direction: Egress
         selector:
           app.kubernetes.io/name: postgres-operator
         remoteGenerated: KubeAPI
+
+      # Custom rules for other scenarios (such as connecting to a non-default pg cluster)
+      {{- range .Values.custom }}
+      - direction: {{ .direction }}
+        selector:
+          {{ .selector | toYaml | nindent 10 }}
+        {{- if not .remoteGenerated }}
+        remoteNamespace: {{ .remoteNamespace }}
+        remoteSelector:
+          {{ .remoteSelector | toYaml | nindent 10 }}
+        port: {{ .port }}
+        {{- else }}
+        remoteGenerated: {{ .remoteGenerated }}
+        {{- end }}
+        description: {{ .description }}
+      {{- end }}

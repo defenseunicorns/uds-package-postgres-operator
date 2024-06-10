@@ -19,3 +19,12 @@ postgresql:
 #     remoteNamespace: tempo
 #     remoteSelector:
 #      app.kubernetes.io/name: tempo
+
+custom: []
+  # - direction: Egress
+  #   selector:
+  #     app.kubernetes.io/name: postgres-operator
+  #   remoteNamespace: acid
+  #   remoteSelector:
+  #     cluster-name: pg-cluster
+  #   description: "Egress to a non-default pg cluster"

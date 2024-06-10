@@ -41,3 +41,14 @@ packages:
                 version: "13"
                 ingress:
                   remoteGenerated: Anywhere
+            - name: ACID_PG_CLUSTER_NETWORKING
+              description: "Allow connectivity to the acid pg cluster for testing (see tests/ folder)"
+              path: custom
+              default:
+                - direction: Egress
+                  selector:
+                    app.kubernetes.io/name: postgres-operator
+                  remoteNamespace: acid
+                  remoteSelector:
+                    cluster-name: pg-cluster
+                  description: "Egress to a non-default pg cluster"

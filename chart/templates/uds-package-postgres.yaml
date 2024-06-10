@@ -20,6 +20,13 @@ spec:
         {{- .Values.postgresql.ingress | toYaml | nindent 8 }}
       {{- end }}
 
+      - direction: Ingress
+        selector:
+          app.kubernetes.io/name: postgres-operator
+        remoteNamespace: postgres-operator
+        remoteSelector:
+          app.kubernetes.io/name: postgres-operator
+
       - direction: Egress
         selector:
           cluster-name: pg-cluster

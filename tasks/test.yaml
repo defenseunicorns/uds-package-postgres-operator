@@ -2,7 +2,7 @@ tasks:
   - name: create-dbs
     actions:
       - description: Create the DB test package for the PG instance
-        cmd: uds zarf package create src/test --confirm --no-progress --architecture=${UDS_ARCH} --skip-sbom
+        cmd: uds zarf package create tests --confirm --no-progress --architecture=${UDS_ARCH} --skip-sbom
       - description: Deploy the test package into the cluster
         cmd: uds zarf package deploy zarf-package-postgres-test-*.tar.zst --confirm
 

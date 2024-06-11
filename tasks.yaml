@@ -39,7 +39,7 @@ tasks:
       - task: create:test-bundle
 
   - name: dev
-    description: Deploy Valkey on existing cluster
+    description: Deploy Postgres Operator on existing cluster
     actions:
       - task: create-pg-package
       - task: dependencies:create

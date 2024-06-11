@@ -13,12 +13,12 @@ postgresql:
 #     yourdb: youruser
 #   version: "13"
 #   ingress:
-#     remoteGenerated: Anywhere
+#     - remoteGenerated: Anywhere
 # or
 #   ingress:
-#     remoteNamespace: tempo
-#     remoteSelector:
-#      app.kubernetes.io/name: tempo
+#     - remoteNamespace: tempo
+#       remoteSelector:
+#         app.kubernetes.io/name: tempo
 
 custom: []
   # - direction: Egress

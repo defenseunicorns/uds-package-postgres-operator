@@ -41,14 +41,8 @@ packages:
                 version: "13"
                 ingress:
                   - remoteNamespace: gitlab
-                    remoteSelector:
-                      app: gitlab
                   - remoteNamespace: mattermost
-                    remoteSelector:
-                      app: mattermost
                   - remoteNamespace: sonarqube
-                    remoteSelector:
-                      app: sonarqube
             - name: ACID_PG_CLUSTER_NETWORKING
               description: "Allow connectivity to the acid pg cluster for testing (see tests/ folder)"
               path: custom

@@ -22,9 +22,9 @@ components:
       onDeploy:
         before:
           # this shims postgres operator versions v0.11.1-uds.1 and below to the new config chart namespace layout
-          - cmd: ./zarf tools kubectl annotate postgresql -n postgres pg-cluster meta.helm.sh/release-namespace=postgres-operator || true
-          - cmd: ./zarf tools kubectl annotate service -n postgres pg-cluster-headless meta.helm.sh/release-namespace=postgres-operator || true
-          - cmd: ./zarf tools kubectl annotate package -n postgres postgres meta.helm.sh/release-namespace=postgres-operator || true
+          - cmd: ./zarf tools kubectl annotate --overwrite postgresql -n postgres pg-cluster meta.helm.sh/release-namespace=postgres-operator || true
+          - cmd: ./zarf tools kubectl annotate --overwrite service -n postgres pg-cluster-headless meta.helm.sh/release-namespace=postgres-operator || true
+          - cmd: ./zarf tools kubectl annotate --overwrite package -n postgres postgres meta.helm.sh/release-namespace=postgres-operator || true
         after:
           - description: Validate Postgres Operator Package
             maxTotalSeconds: 300

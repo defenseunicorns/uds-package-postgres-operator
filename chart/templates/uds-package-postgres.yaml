@@ -13,12 +13,19 @@ spec:
       - direction: Egress
         remoteGenerated: IntraNamespace
 
+    {{- if kindIs "slice" .Values.postgresql.ingress -}}
       {{- range .Values.postgresql.ingress }}
       - direction: Ingress
         selector:
           cluster-name: pg-cluster
         {{ . | toYaml | nindent 8 }}
       {{- end }}
+    {{- else }}
+      - direction: Ingress
+        selector:
+          cluster-name: pg-cluster
+        {{- .Values.postgresql.ingress | toYaml | nindent 8 }}
+    {{- end }}
 
       - direction: Ingress
         selector:

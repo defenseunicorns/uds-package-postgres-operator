@@ -3,7 +3,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: pg-cluster-headless
-  namespace: {{ .Release.Namespace }}
+  namespace: postgres
 spec:
   clusterIP: None
   ports:

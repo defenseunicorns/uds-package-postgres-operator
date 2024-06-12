@@ -2,7 +2,7 @@ apiVersion: uds.dev/v1alpha1
 kind: Package
 metadata:
   name: postgres-operator
-  namespace: postgres-operator
+  namespace: {{ .Release.Namespace }}
 spec:
   network:
     allow:
@@ -10,7 +10,7 @@ spec:
       - direction: Egress
         selector:
           app.kubernetes.io/name: postgres-operator
-        remoteNamespace: {{ .Release.Namespace }}
+        remoteNamespace: postgres
         remoteSelector:
           cluster-name: pg-cluster
       {{- end }}

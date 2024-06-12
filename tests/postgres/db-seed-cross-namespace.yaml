@@ -16,6 +16,8 @@ kind: Job
 metadata:
   name: db-seed-job
   namespace: gitlab
+  labels:
+    app: gitlab
 spec:
   template:
     spec:

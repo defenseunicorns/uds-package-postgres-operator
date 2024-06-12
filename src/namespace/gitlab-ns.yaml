@@ -2,3 +2,7 @@ kind: Namespace
 apiVersion: v1
 metadata:
   name: gitlab
+  # This label is only needed for testing!
+  # In a real deployment this namespace would be controlled by a UDS Package / the UDS Operator
+  labels:
+    istio-injection: enabled

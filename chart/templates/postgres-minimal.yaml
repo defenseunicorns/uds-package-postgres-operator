@@ -3,7 +3,7 @@ apiVersion: acid.zalan.do/v1
 kind: postgresql
 metadata:
   name: pg-cluster
-  namespace: {{ .Release.Namespace }}
+  namespace: postgres
 spec:
   teamId: {{ .Values.postgresql.teamId | quote }}
   volume:

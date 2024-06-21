@@ -1,4 +1,9 @@
 tasks:
+  - name: all
+    actions:
+      - task: health-check
+      - task: create-dbs
+
   - name: create-dbs
     actions:
       - description: Create the DB test package for the PG instance

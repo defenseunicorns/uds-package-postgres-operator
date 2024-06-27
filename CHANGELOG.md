@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.11.0-uds.3](https://github.com/defenseunicorns/uds-package-postgres-operator/compare/v1.11.0-uds.2...v1.11.0-uds.3) (2024-06-27)
+
+
+### Miscellaneous
+
+* add architecture to publish job name ([#42](https://github.com/defenseunicorns/uds-package-postgres-operator/issues/42)) ([5a6d73f](https://github.com/defenseunicorns/uds-package-postgres-operator/commit/5a6d73f5d7731d919493e6d29614c1bf3739fc9b))
+* add pre release testing ([#40](https://github.com/defenseunicorns/uds-package-postgres-operator/issues/40)) ([ac40af4](https://github.com/defenseunicorns/uds-package-postgres-operator/commit/ac40af4a8b24885f2cb8dac81d45a8e8caae0f50))
+* normalize the repository README and remove `.vscode` ([#43](https://github.com/defenseunicorns/uds-package-postgres-operator/issues/43)) ([aa54ab8](https://github.com/defenseunicorns/uds-package-postgres-operator/commit/aa54ab8882e317bc53092d3c1ef44a44bd72f7ad))
+
 ## [1.11.0-uds.2](https://github.com/defenseunicorns/uds-package-postgres-operator/compare/v1.11.0-uds.1...v1.11.0-uds.2) (2024-06-12)
 
 

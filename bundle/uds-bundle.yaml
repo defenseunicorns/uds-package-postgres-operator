@@ -3,17 +3,19 @@ metadata:
   name: postgres-operator-test
   description: A UDS bundle for deploying Zalando Postgres Operator and on a development cluster
   # x-release-please-start-version
-  version: 1.11.0-uds.1
+  version: 1.11.0-uds.2
   # x-release-please-end
 
 packages:
+  # this sets up the namespaces that we will need in order to configure the default databases (and corresponding secrets) that are setup below
   - name: dev-namespaces
     path: ../
     ref: 0.1.0
+
   - name: postgres-operator
     path: ../
     # x-release-please-start-version
-    ref: 1.11.0-uds.1
+    ref: 1.11.0-uds.2
     # x-release-please-end
     overrides:
       postgres-operator:
@@ -22,3 +24,31 @@ packages:
             - name: POSTGRESQL
               description: "Configure postgres using CRs via the uds-postgres-config chart"
               path: postgresql
+              default:
+                enabled: true  # Set to false to not create the PostgreSQL resource
+                teamId: "uds"
+                volume:
+                  size: "10Gi"
+                numberOfInstances: 2
+                users:
+                  gitlab.gitlab: []  # database owner
+                  sonarqube.sonarqube: []  # database owner
+                  mattermost.mattermost: []  # database owner
+                databases:
+                  gitlabdb: gitlab.gitlab
+                  mattermostdb: mattermost.mattermost
+                  sonarqubedb: sonarqube.sonarqube
+                version: "13"
+                ingress:
+                  remoteGenerated: Anywhere
+            - name: ACID_PG_CLUSTER_NETWORKING
+              description: "Allow connectivity to the acid pg cluster for testing (see tests/ folder)"
+              path: custom
+              default:
+                - direction: Egress
+                  selector:
+                    app.kubernetes.io/name: postgres-operator
+                  remoteNamespace: acid
+                  remoteSelector:
+                    cluster-name: pg-cluster
+                  description: "Egress to a non-default pg cluster"

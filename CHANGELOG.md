@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.11.0-uds.2](https://github.com/defenseunicorns/uds-package-postgres-operator/compare/v1.11.0-uds.1...v1.11.0-uds.2) (2024-06-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* enable istio and netpols for everything ([#37](https://github.com/defenseunicorns/uds-package-postgres-operator/issues/37))
+
+### Features
+
+* enable istio and netpols for everything ([#37](https://github.com/defenseunicorns/uds-package-postgres-operator/issues/37)) ([642a38d](https://github.com/defenseunicorns/uds-package-postgres-operator/commit/642a38d91f07e5564e9c74742c8a8f0be2a860cf))
+
+
+### Miscellaneous
+
+* cleanup the repo ([#34](https://github.com/defenseunicorns/uds-package-postgres-operator/issues/34)) ([6fa6840](https://github.com/defenseunicorns/uds-package-postgres-operator/commit/6fa6840f61b3fca289fd0e2b8a4a42f807bd850e))
+* **deps:** update postgres support dependencies ([#29](https://github.com/defenseunicorns/uds-package-postgres-operator/issues/29)) ([1c55b70](https://github.com/defenseunicorns/uds-package-postgres-operator/commit/1c55b7010c9efc5f2c3e8a18d7d63a82b61e27e8))
+* **deps:** update postgres support dependencies ([#36](https://github.com/defenseunicorns/uds-package-postgres-operator/issues/36)) ([87c07ab](https://github.com/defenseunicorns/uds-package-postgres-operator/commit/87c07ab27de9703cb6bd8cb15cc076dbdb870956))
+
 ## [1.11.0-uds.1](https://github.com/defenseunicorns/uds-package-postgres-operator/compare/v1.11.0-uds.0...v1.11.0-uds.1) (2024-06-07)
 
 

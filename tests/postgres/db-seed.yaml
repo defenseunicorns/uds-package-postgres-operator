@@ -16,6 +16,8 @@ kind: Job
 metadata:
   name: db-seed-job
   namespace: acid
+  labels:
+    app: acid
 spec:
   template:
     spec:

@@ -2,8 +2,8 @@ image:
   registry: ghcr.io
   repository: zalando/postgres-operator
 configConnectionPooler:
-  connection_pooler_image: "docker.io/bitnami/pgbouncer:1.21.0"
+  connection_pooler_image: "docker.io/bitnami/pgbouncer:1.23.0"
 configLogicalBackup:
-  logical_backup_docker_image: "ghcr.io/zalando/postgres-operator/logical-backup:v1.11.0"
+  logical_backup_docker_image: "ghcr.io/zalando/postgres-operator/logical-backup:v1.12.2"
 configGeneral:
   docker_image: "ghcr.io/zalando/spilo-15:3.2-p1"

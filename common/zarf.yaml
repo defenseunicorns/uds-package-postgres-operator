@@ -13,7 +13,7 @@ components:
         version: 0.1.0
         localPath: ../chart
       - name: postgres-operator
-        version: 1.11.0
+        version: 1.12.2
         namespace: postgres-operator
         url: https://opensource.zalando.com/postgres-operator/charts/postgres-operator
         valuesFiles:

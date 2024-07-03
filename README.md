@@ -36,3 +36,7 @@ After installing uds-cli, for a list of available tasks that can be run in this 
 ## Contributing
 
 Please see the [CONTRIBUTING.md](./CONTRIBUTING.md)
+
+## Development
+
+When developing this package it is ideal to utilize the json schemas for UDS Bundles, Zarf Packages and Maru Tasks. This involves configuring your IDE to provide schema validation for the respective files used by each application. For guidance on how to set up this schema validation, please refer to the [guide](https://github.com/defenseunicorns/uds-common/blob/main/docs/development-ide-configuration.md) in uds-common.

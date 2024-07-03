@@ -21,5 +21,5 @@ tasks:
         task: publish:package
         with:
           # x-release-please-start-version
-          version: "1.11.0-uds.2"
+          version: "1.12.2-uds.0"
           # x-release-please-end

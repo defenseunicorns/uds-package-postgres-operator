@@ -38,9 +38,9 @@ packages:
                   gitlabdb: gitlab.gitlab
                   mattermostdb: mattermost.mattermost
                   sonarqubedb: sonarqube.sonarqube
-                version: "13"
+                version: "14"
                 ingress:
-                  remoteGenerated: Anywhere
+                  - remoteNamespace: gitlab
             - name: ACID_PG_CLUSTER_NETWORKING
               description: "Allow connectivity to the acid pg cluster for testing (see tests/ folder)"
               path: custom

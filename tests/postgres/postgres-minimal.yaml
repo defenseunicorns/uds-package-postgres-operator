@@ -22,4 +22,4 @@ spec:
   databases:
     mydb: myuser
   postgresql:
-    version: "13"
+    version: "14"

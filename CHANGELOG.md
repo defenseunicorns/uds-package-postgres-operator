@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.12.2-uds.1](https://github.com/defenseunicorns/uds-package-postgres-operator/compare/v1.12.2-uds.0...v1.12.2-uds.1) (2024-07-09)
+
+
+### Bug Fixes
+
+* netpol selector correction for ingress to pg-cluster ([#48](https://github.com/defenseunicorns/uds-package-postgres-operator/issues/48)) ([8c28aea](https://github.com/defenseunicorns/uds-package-postgres-operator/commit/8c28aea517b087093b509636c0e47ef37ad7141d))
+
+
+### Miscellaneous
+
+* **deps:** update support-deps to v4.3.4 ([#47](https://github.com/defenseunicorns/uds-package-postgres-operator/issues/47)) ([54c533b](https://github.com/defenseunicorns/uds-package-postgres-operator/commit/54c533b3befbd7330abec4c84e2644e18beb7eb0))
+* fix arm runner name ([#45](https://github.com/defenseunicorns/uds-package-postgres-operator/issues/45)) ([298ef55](https://github.com/defenseunicorns/uds-package-postgres-operator/commit/298ef5519d24eca3b13550b966db7eb6dbe3c6f1))
+
 ## [1.12.2-uds.0](https://github.com/defenseunicorns/uds-package-postgres-operator/compare/v1.11.0-uds.2...v1.12.2-uds.0) (2024-07-03)
 
 

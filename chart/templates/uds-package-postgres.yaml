@@ -29,7 +29,7 @@ spec:
 
       - direction: Ingress
         selector:
-          app.kubernetes.io/name: postgres-operator
+          cluster-name: pg-cluster
         remoteNamespace: {{ .Release.Namespace }}
         remoteSelector:
           app.kubernetes.io/name: postgres-operator

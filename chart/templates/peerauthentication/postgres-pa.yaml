@@ -1,4 +1,4 @@
-{{- if .Capabilities.APIVersions.Has "security.istio.io/v1beta1") .Values.monitoring }}
+{{- if and (.Capabilities.APIVersions.Has "security.istio.io/v1beta1") .Values.monitoring }}
 apiVersion: "security.istio.io/v1beta1"
 kind: PeerAuthentication
 metadata:

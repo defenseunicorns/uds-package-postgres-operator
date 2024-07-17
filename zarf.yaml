@@ -54,3 +54,5 @@ components:
       - docker.io/bitnami/pgbouncer:1.23.0
       # Docker image that provides PostgreSQL and Patroni bundled together for PostgreSQL HA
       - ghcr.io/zalando/spilo-15:3.2-p1
+      #Container iamge that provides the postgres-exporter sidecar to create a metrics endpoint
+      - quay.io/prometheuscommunity/postgres-exporter:v0.15.0

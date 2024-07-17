@@ -1,0 +1,17 @@
+{{- if .Capabilities.APIVersions.Has "security.istio.io/v1beta1" }}
+apiVersion: "security.istio.io/v1beta1"
+kind: PeerAuthentication
+metadata:
+  name: postgres-cluster-mtls
+  namespace: {{ .Release.Namespace }}
+spec:
+  selector:
+    matchLabels:
+      application: spilo
+  mtls:
+    mode: STRICT
+  portLevelMtls:
+    # Allow webhooks to operate permissive since ingress originates from the nodes
+    "9187":
+      mode: PERMISSIVE
+{{- end }}

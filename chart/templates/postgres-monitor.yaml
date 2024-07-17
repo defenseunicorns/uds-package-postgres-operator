@@ -1,0 +1,16 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: postgres-exporter
+  namespace: postgres
+  annotations:
+    uds/skip-mutate: "true"
+spec:
+  selector:
+    matchLabels:
+      application: spilo
+  podMetricsEndpoints:
+    - port: exporter
+  namespaceSelector:
+    matchNames:
+      - postgres

@@ -41,5 +41,3 @@ configLogicalBackup:
 configUsers:
   enable_password_rotation: false # False for now, pepr-bae needed to cycle applications using the creds
   password_rotation_interval: 90
-monitoring:
-  enabled: true

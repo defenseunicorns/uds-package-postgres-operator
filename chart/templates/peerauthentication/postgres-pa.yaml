@@ -1,9 +1,9 @@
-{{- if and (.Capabilities.APIVersions.Has "security.istio.io/v1beta1") .Values.monitoring }}
+{{- if and .Values.monitoring (.Capabilities.APIVersions.Has "security.istio.io/v1beta1") }}
 apiVersion: "security.istio.io/v1beta1"
 kind: PeerAuthentication
 metadata:
   name: postgres-cluster-mtls
-  namespace: {{ .Release.Namespace }}
+  namespace: postgres
 spec:
   selector:
     matchLabels:

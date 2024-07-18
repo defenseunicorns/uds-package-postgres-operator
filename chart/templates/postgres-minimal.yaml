@@ -9,6 +9,8 @@ spec:
   volume:
     size: {{ .Values.postgresql.volume.size | quote }}
   numberOfInstances: {{ .Values.postgresql.numberOfInstances }}
+  patroni:
+    {{- toYaml .Values.postgresql.patroni | nindent 4 }}
   users:
     {{- toYaml .Values.postgresql.users | nindent 4 }} # database owner
   databases:

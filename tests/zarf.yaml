@@ -23,7 +23,7 @@ components:
                 name: pg-cluster
                 namespace: postgres
                 condition: "'{.status.PostgresClusterStatus}'=Running"
-            maxTotalSeconds: 600
+            maxTotalSeconds: 630
         after:
           - wait:
               cluster:

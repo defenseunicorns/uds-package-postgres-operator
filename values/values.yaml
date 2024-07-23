@@ -4,36 +4,6 @@ configGeneral:
   # StatefulSet is modified but a rolling update is not automatically triggered.
   enable_lazy_spilo_upgrade: true
   resync_period: "5m"
-  sidecars:
-    - name: "exporter"
-      ports:
-        - name: exporter
-          containerPort: 9187
-          protocol: TCP
-      resources:
-        limits:
-          cpu: 500m
-          memory: 256M
-        requests:
-          cpu: 100m
-          memory: 200M
-      securityContext:
-        runAsUser: 37
-        runAsGroup: 37
-      env:
-        - name: "DATA_SOURCE_URI"
-          value: "$(POD_NAME)/postgres"
-        - name: "DATA_SOURCE_USER"
-          valueFrom:
-            secretKeyRef:
-              name: postgres.pg-cluster.credentials.postgresql.acid.zalan.do
-              key: username
-        - name: "DATA_SOURCE_PASS"
-          valueFrom:
-            secretKeyRef:
-              name: postgres.pg-cluster.credentials.postgresql.acid.zalan.do
-              key: password
-
 configPostgresPodResources:
   default_cpu_request: "100m"
   default_memory_request: "100Mi"

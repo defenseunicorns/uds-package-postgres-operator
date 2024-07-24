@@ -67,4 +67,3 @@ components:
                 name: db-seed-job
                 namespace: acid
                 condition: "'{.status.succeeded}'=1"
-            maxTotalSeconds: 600

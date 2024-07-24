@@ -1,18 +1,17 @@
-{{- if .Values.monitoring }}
 apiVersion: monitoring.coreos.com/v1
 kind: PodMonitor
 metadata:
   name: postgres-exporter
   namespace: postgres
-  annotations:
-    uds/skip-mutate: "true"
 spec:
-  selector:
-    matchLabels:
-      application: spilo
-  podMetricsEndpoints:
-    - port: exporter
+  scrapeClass: istio-certs
   namespaceSelector:
     matchNames:
       - postgres
-{{- end }}
+  podMetricsEndpoints:
+    - port: exporter
+      scheme: https
+      enableHttp2: false
+  selector:
+    matchLabels:
+      application: spilo

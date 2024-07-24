@@ -29,4 +29,3 @@ custom: []
   #   remoteSelector:
   #     cluster-name: pg-cluster
   #   description: "Egress to a non-default pg cluster"
-monitoring: false

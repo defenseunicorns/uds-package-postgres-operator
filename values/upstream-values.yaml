@@ -7,33 +7,3 @@ configLogicalBackup:
   logical_backup_docker_image: "ghcr.io/zalando/postgres-operator/logical-backup:v1.12.2"
 configGeneral:
   docker_image: "ghcr.io/zalando/spilo-15:3.2-p1"
-  sidecars:
-    - name: "exporter"
-      image: "quay.io/prometheuscommunity/postgres-exporter:v0.15.0"
-      ports:
-        - name: exporter
-          containerPort: 9187
-          protocol: TCP
-      resources:
-        limits:
-          cpu: 500m
-          memory: 256M
-        requests:
-          cpu: 100m
-          memory: 200M
-      securityContext:
-        runAsUser: 37
-        runAsGroup: 37
-      env:
-        - name: "DATA_SOURCE_URI"
-          value: "$(POD_NAME)/postgres"
-        - name: "DATA_SOURCE_USER"
-          valueFrom:
-            secretKeyRef:
-              name: postgres.pg-cluster.credentials.postgresql.acid.zalan.do
-              key: username
-        - name: "DATA_SOURCE_PASS"
-          valueFrom:
-            secretKeyRef:
-              name: postgres.pg-cluster.credentials.postgresql.acid.zalan.do
-              key: password

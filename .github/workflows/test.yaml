@@ -34,7 +34,7 @@ permissions:
 jobs:
   test:
     name: ${{ matrix.type }} ${{ matrix.flavor }}
-    runs-on: ubuntu-latest
+    runs-on: uds-swf-ubuntu-big-boy-4-core
     strategy:
       matrix:
         flavor: [upstream, registry1]

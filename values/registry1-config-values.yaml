@@ -1,2 +1,2 @@
-metrics_sidcar:
+metrics_sidecar:
   image: "registry1.dso.mil/ironbank/opensource/prometheus/postgres-exporter:v0.15.0"

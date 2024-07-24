@@ -1,2 +1,2 @@
-metrics_sidcar:
+metrics_sidecar:
   image: "quay.io/prometheuscommunity/postgres-exporter:v0.15.0"

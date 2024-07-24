@@ -23,7 +23,7 @@ components:
                 name: pg-cluster
                 namespace: postgres
                 condition: "'{.status.PostgresClusterStatus}'=Running"
-            maxTotalSeconds: 700
+            maxTotalSeconds: 600
         after:
           - wait:
               cluster:
@@ -49,7 +49,7 @@ components:
                 name: pg-cluster
                 namespace: acid
                 condition: "'{.status.PostgresClusterStatus}'=Running"
-            maxTotalSeconds: 700
+            maxTotalSeconds: 600
   - name: test-standalone-postgres-deployment
     required: true
     manifests:
@@ -67,3 +67,4 @@ components:
                 name: db-seed-job
                 namespace: acid
                 condition: "'{.status.succeeded}'=1"
+            maxTotalSeconds: 600

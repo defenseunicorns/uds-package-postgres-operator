@@ -34,7 +34,7 @@ permissions:
 jobs:
   test:
     name: ${{ matrix.type }} ${{ matrix.flavor }}
-    runs-on: ${{ matrix.type == 'install' && 'uds-swf-ubuntu-big-boy-8-core' || 'ubuntu-latest' }}
+    runs-on: 'ubuntu-latest'
     strategy:
       matrix:
         flavor: [upstream, registry1]

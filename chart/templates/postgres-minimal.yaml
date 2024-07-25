@@ -17,7 +17,7 @@ spec:
     version: {{ .Values.postgresql.version | quote }}
   sidecars:
     - name: "exporter"
-      image: {{ .Values.metrics | quote }}
+      image: {{ .Values.metrics.image | quote }}
       ports:
         - name: exporter
           containerPort: 9187

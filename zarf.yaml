@@ -31,6 +31,9 @@ components:
         valuesFiles:
           - ./values/registry1-values.yaml
           - ./values/registry1-config-values.yaml
+      - name: uds-postgres-config
+        valuesFiles:
+          - ./values/registry1-config-values.yaml
     images:
       # Iron Bank
       - registry1.dso.mil/ironbank/opensource/zalando/postgres-operator:v1.12.2
@@ -51,6 +54,8 @@ components:
       - name: postgres-operator
         valuesFiles:
           - ./values/upstream-values.yaml
+      - name: uds-postgres-config
+        valuesFiles:
           - ./values/upstream-config-values.yaml
     images:
       - ghcr.io/zalando/postgres-operator:v1.12.2

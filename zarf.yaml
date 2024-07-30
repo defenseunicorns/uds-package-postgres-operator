@@ -30,7 +30,6 @@ components:
       - name: postgres-operator
         valuesFiles:
           - ./values/registry1-values.yaml
-          - ./values/registry1-config-values.yaml
       - name: uds-postgres-config
         valuesFiles:
           - ./values/registry1-config-values.yaml

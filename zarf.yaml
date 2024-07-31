@@ -30,6 +30,9 @@ components:
       - name: postgres-operator
         valuesFiles:
           - ./values/registry1-values.yaml
+      - name: uds-postgres-config
+        valuesFiles:
+          - ./values/registry1-config-values.yaml
     images:
       # Iron Bank
       - registry1.dso.mil/ironbank/opensource/zalando/postgres-operator:v1.12.2
@@ -37,6 +40,8 @@ components:
       - registry1.dso.mil/ironbank/opensource/zalando/pgbouncer:1.21.0
       # Docker image that provides PostgreSQL and Patroni bundled together for PostgreSQL HA
       - ghcr.io/zalando/spilo-15:3.2-p1
+      # Container iamge that provides the postgres-exporter sidecar to create a metrics endpoint
+      - registry1.dso.mil/ironbank/opensource/prometheus/postgres-exporter:v0.15.0
 
   - name: postgres-operator
     required: true
@@ -48,9 +53,14 @@ components:
       - name: postgres-operator
         valuesFiles:
           - ./values/upstream-values.yaml
+      - name: uds-postgres-config
+        valuesFiles:
+          - ./values/upstream-config-values.yaml
     images:
       - ghcr.io/zalando/postgres-operator:v1.12.2
       - ghcr.io/zalando/postgres-operator/logical-backup:v1.12.2
       - docker.io/bitnami/pgbouncer:1.23.0
       # Docker image that provides PostgreSQL and Patroni bundled together for PostgreSQL HA
       - ghcr.io/zalando/spilo-15:3.2-p1
+      # Container iamge that provides the postgres-exporter sidecar to create a metrics endpoint
+      - quay.io/prometheuscommunity/postgres-exporter:v0.15.0

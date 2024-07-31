@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.12.2-uds.2](https://github.com/defenseunicorns/uds-package-postgres-operator/compare/v1.12.2-uds.1...v1.12.2-uds.2) (2024-07-31)
+
+
+### Features
+
+* **metrics:** building blocks for postgres exporter ([#53](https://github.com/defenseunicorns/uds-package-postgres-operator/issues/53)) ([c2a47bc](https://github.com/defenseunicorns/uds-package-postgres-operator/commit/c2a47bc77ccf3fda6f302a11968d879337ff4957))
+
+
+### Miscellaneous
+
+* add `Made for UDS` badge ([#57](https://github.com/defenseunicorns/uds-package-postgres-operator/issues/57)) ([2aa0328](https://github.com/defenseunicorns/uds-package-postgres-operator/commit/2aa032862718c462f51032a2951f26249e344f98))
+* **deps:** update postgres support dependencies ([#50](https://github.com/defenseunicorns/uds-package-postgres-operator/issues/50)) ([18c6c03](https://github.com/defenseunicorns/uds-package-postgres-operator/commit/18c6c03b5dc1fdc583277f40b1233779ac43ec9a))
+* **deps:** update postgres support dependencies ([#56](https://github.com/defenseunicorns/uds-package-postgres-operator/issues/56)) ([a79c9c6](https://github.com/defenseunicorns/uds-package-postgres-operator/commit/a79c9c68e18fdf0b7d97852b9a2af3615f911428))
+* **deps:** update support-deps to v3.25.15 ([#55](https://github.com/defenseunicorns/uds-package-postgres-operator/issues/55)) ([84d4c33](https://github.com/defenseunicorns/uds-package-postgres-operator/commit/84d4c33818eaefa72b241d733b937620b627762c))
+
 ## [1.12.2-uds.1](https://github.com/defenseunicorns/uds-package-postgres-operator/compare/v1.12.2-uds.0...v1.12.2-uds.1) (2024-07-09)
 
 

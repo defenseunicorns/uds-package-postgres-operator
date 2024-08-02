@@ -59,7 +59,7 @@ components:
     images:
       - ghcr.io/zalando/postgres-operator:v1.12.2
       - ghcr.io/zalando/postgres-operator/logical-backup:v1.12.2
-      - docker.io/bitnami/pgbouncer:1.23.0
+      - docker.io/bitnami/pgbouncer:1.23.1
       # Docker image that provides PostgreSQL and Patroni bundled together for PostgreSQL HA
       - ghcr.io/zalando/spilo-15:3.2-p1
       # Container iamge that provides the postgres-exporter sidecar to create a metrics endpoint

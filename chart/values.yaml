@@ -7,12 +7,12 @@ postgresql:
 #     size: "1Gi"
 #   numberOfInstances: 2
 #   users:
-#     myuser: []  # database owner
-#     # youruser: []  # database owner
+#     mynamespace.myuser: []  # database owner
+#     # yournamespace.youruser: []  # database owner
 #   databases:
-#     mydb: myuser
-#     yourdb: youruser
-#   version: "13"
+#     mydb: mynamespace.myuser
+#     yourdb: yournamespace.youruser
+#   version: "14"
 #   ingress:
 #     - remoteGenerated: Anywhere
 # or

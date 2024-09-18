@@ -20,3 +20,20 @@ Postgres Operator is configured through [`acid.zalan.do/v1` `Postgresql` custom 
 - `postgresql.databases`: The database names to create and the users they map to (i.e. `gitlabdb: gitlab.gitlab`)
 - `postgresql.version`: The version of Postgres to run (i.e. `14`)
 - `postgresql.ingress`: A list of ingress entries to create for this cluster (follows the [custom networking definition](https://github.com/defenseunicorns/uds-software-factory/blob/main/docs/networking.md) except for `direction` which is always `Ingress` and `selector` which is always `cluster-name: pg-cluster`)
+- `postgresql.resources`: A Kubernetes Pod resource specification to define requests and limits
+- `postgresql.additionalVolumes`: A list of additional volumes to map into the Postgres container if needed (see below)
+
+## Postgres HugePages
+
+Postgres Operator can also support HugePages by setting the following keys appropriately for your environment.  You can learn more about HugePages in Kubernetes in their [Manage HugePages documentation](https://kubernetes.io/docs/tasks/manage-hugepages/scheduling-hugepages/#api) and learn more about these fields in the [`Postgresql` custom resource reference documentation](https://github.com/zalando/postgres-operator/blob/master/docs/reference/cluster_manifest.md#cluster-manifest-reference).
+
+- `postgresql.resources`: This allows you to set the desired hugepages `limits` and `requests`
+- `postgresql.additionalVolumes`: This allows you to map the correct hugepages volumes into the container, e.g.:
+
+```yaml
+  - name: hugepage-2mi
+    mountPath: /hugepages-2Mi
+    volumeSource:
+      emptyDir:
+        medium: HugePages-2Mi
+```

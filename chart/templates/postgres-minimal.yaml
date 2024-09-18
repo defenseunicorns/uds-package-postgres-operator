@@ -15,6 +15,14 @@ spec:
     {{- toYaml .Values.postgresql.databases | nindent 4 }}
   postgresql:
     version: {{ .Values.postgresql.version | quote }}
+  resources:
+    {{- toYaml .Values.postgresql.resources | nindent 4 }}
+  {{- if ne (len .Values.postgresql.additionalVolumes) 0 }}
+  additionalVolumes:
+    {{- range .Values.postgresql.additionalVolumes }}
+    - {{ . | toYaml | nindent 6 }}
+    {{- end }}
+  {{- end }}
   sidecars:
     - name: "exporter"
       image: {{ .Values.metrics.image | quote }}

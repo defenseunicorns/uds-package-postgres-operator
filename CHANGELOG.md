@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.13.0-uds.1](https://github.com/defenseunicorns/uds-package-postgres-operator/compare/v1.13.0-uds.0...v1.13.0-uds.1) (2024-09-19)
+
+
+### Features
+
+* expose resources and additionalVolumes for HugePages ([#63](https://github.com/defenseunicorns/uds-package-postgres-operator/issues/63)) ([49152b3](https://github.com/defenseunicorns/uds-package-postgres-operator/commit/49152b36cee10c7314f04811a7a9e2341f122ccb))
+
 ## [1.13.0-uds.0](https://github.com/defenseunicorns/uds-package-postgres-operator/compare/v1.12.2-uds.2...v1.13.0-uds.0) (2024-08-27)
 
 

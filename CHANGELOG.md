@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.13.0-uds.2](https://github.com/defenseunicorns/uds-package-postgres-operator/compare/v1.13.0-uds.1...v1.13.0-uds.2) (2024-09-25)
+
+
+### ⚠ BREAKING CHANGES
+
+* add additional config options and update default pasword encryption for fips ([#65](https://github.com/defenseunicorns/uds-package-postgres-operator/issues/65))
+
+### Features
+
+* add additional config options and update default pasword encryption for fips ([#65](https://github.com/defenseunicorns/uds-package-postgres-operator/issues/65)) ([a3e23b4](https://github.com/defenseunicorns/uds-package-postgres-operator/commit/a3e23b4d75f67832d1d2452c068e0155805d12f0))
+
 ## [1.13.0-uds.1](https://github.com/defenseunicorns/uds-package-postgres-operator/compare/v1.13.0-uds.0...v1.13.0-uds.1) (2024-09-19)
 
 

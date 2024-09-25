@@ -1,5 +1,6 @@
 postgresql:
   enabled: false
+  password_encryption: scram-sha-256
   ingress: []
   resources:
     limits:
@@ -9,6 +10,7 @@ postgresql:
       cpu: 100m
       memory: 100Mi
   additionalVolumes: []
+  env: []
 
 #   teamId: "uds"
 #   volume:

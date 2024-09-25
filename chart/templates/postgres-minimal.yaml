@@ -5,6 +5,8 @@ metadata:
   name: pg-cluster
   namespace: postgres
 spec:
+  env:
+    {{- toYaml .Values.postgresql.env | nindent 4 }} 
   teamId: {{ .Values.postgresql.teamId | quote }}
   volume:
     size: {{ .Values.postgresql.volume.size | quote }}
@@ -13,7 +15,11 @@ spec:
     {{- toYaml .Values.postgresql.users | nindent 4 }} # database owner
   databases:
     {{- toYaml .Values.postgresql.databases | nindent 4 }}
+  patroni:
+    {{- toYaml .Values.postgresql.patroni | nindent 4 }}
   postgresql:
+    parameters:
+      password_encryption: {{ .Values.postgresql.password_encryption | quote }}
     version: {{ .Values.postgresql.version | quote }}
   resources:
     {{- toYaml .Values.postgresql.resources | nindent 4 }}

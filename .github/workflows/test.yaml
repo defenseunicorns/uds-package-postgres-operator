@@ -59,4 +59,5 @@ jobs:
       upgrade-flavors: ${{ needs.flavor-test.outputs.upgrade-flavors }}
       flavor: ${{ matrix.flavor }}
       type: ${{ matrix.type }}
+      udsCommonVersion: 243-update-uds-common-gh-actions-to-use-maruuds-run-conditionals
     secrets: inherit # Inherits all secrets from the parent workflow.

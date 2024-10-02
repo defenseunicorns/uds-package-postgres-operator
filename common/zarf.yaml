@@ -31,8 +31,8 @@ components:
             wait:
               cluster:
                 kind: Packages
-                name: postgres
-                namespace: postgres
+                name: postgres-operator
+                namespace: postgres-operator
                 condition: "'{.status.phase}'=Ready"
           - description: Postgres Operator to be Healthy
             maxTotalSeconds: 90

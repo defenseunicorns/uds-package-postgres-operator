@@ -11,7 +11,5 @@ jobs:
     name: Lint
     permissions:
       contents: read # Allows reading the repo contents
-    uses: defenseunicorns/uds-common/.github/workflows/lint.yaml@243-update-uds-common-gh-actions-to-use-maruuds-run-conditionals
-    with:
-      udsCommonVersion: 243-update-uds-common-gh-actions-to-use-maruuds-run-conditionals
+    uses: defenseunicorns/uds-common/.github/workflows/callable-lint.yaml@243-update-uds-common-gh-actions-to-use-maruuds-run-conditionals
     secrets: inherit # Inherits all secrets from the parent workflow.

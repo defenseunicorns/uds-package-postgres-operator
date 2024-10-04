@@ -54,7 +54,7 @@ jobs:
       matrix:
         type: [install, upgrade]
         flavor: [upstream, unicorn, registry1]
-    uses: defenseunicorns/uds-common/.github/workflows/test-deploy.yaml@243-update-uds-common-gh-actions-to-use-maruuds-run-conditionals
+    uses: defenseunicorns/uds-common/.github/workflows/callable-test.yaml@243-update-uds-common-gh-actions-to-use-maruuds-run-conditionals
     with:
       upgrade-flavors: ${{ needs.flavor-test.outputs.upgrade-flavors }}
       flavor: ${{ matrix.flavor }}

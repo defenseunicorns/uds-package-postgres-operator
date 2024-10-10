@@ -6,6 +6,7 @@ includes:
   - pull: https://raw.githubusercontent.com/defenseunicorns/uds-common/v0.10.0/tasks/pull.yaml
   - deploy: https://raw.githubusercontent.com/defenseunicorns/uds-common/v0.10.0/tasks/deploy.yaml
   - setup: https://raw.githubusercontent.com/defenseunicorns/uds-common/v0.10.0/tasks/setup.yaml
+  - actions: https://raw.githubusercontent.com/defenseunicorns/uds-common/243-update-uds-common-gh-actions-to-use-maruuds-run-conditionals/tasks/actions.yaml
 
 tasks:
   - name: default

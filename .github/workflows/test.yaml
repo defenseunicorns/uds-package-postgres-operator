@@ -29,40 +29,35 @@ concurrency:
   cancel-in-progress: true
 
 permissions:
-  contents: read
+  contents: read # Allows reading the content of the repository.
+  packages: read # Allows reading the content of the repository's packages.
+  id-token: write
 
 jobs:
-  test:
-    name: ${{ matrix.type }} ${{ matrix.flavor }}
+  flavor-test:
+    name: Test-Flavor
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        flavor: [upstream, registry1]
-        type: [install, upgrade]
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
 
-      - name: Environment setup
-        uses: defenseunicorns/uds-common/.github/actions/setup@e7c0643d3f9d74ce49c7386b48964d2be646d726 # v0.10.0
-        with:
-          registry1Username: ${{ secrets.IRON_BANK_ROBOT_USERNAME }}
-          registry1Password: ${{ secrets.IRON_BANK_ROBOT_PASSWORD }}
-          ghToken: ${{ secrets.GITHUB_TOKEN }}
+      - name: test-flavor
+        uses: defenseunicorns/uds-common/.github/actions/test-flavor@243-update-uds-common-gh-actions-to-use-maruuds-run-conditionals
+        id: test-flavor
+    outputs:
+      upgrade-flavors: ${{ steps.test-flavor.outputs.upgrade-flavors }}
 
-      - name: Test
-        uses: defenseunicorns/uds-common/.github/actions/test@e7c0643d3f9d74ce49c7386b48964d2be646d726 # v0.10.0
-        with:
-          flavor: ${{ matrix.flavor }}
-          type: ${{ matrix.type }}
-
-      - name: Debug Output
-        if: ${{ always() }}
-        uses: defenseunicorns/uds-common/.github/actions/debug-output@e7c0643d3f9d74ce49c7386b48964d2be646d726 # v0.10.0
-
-      - name: Save logs
-        if: always()
-        uses: defenseunicorns/uds-common/.github/actions/save-logs@e7c0643d3f9d74ce49c7386b48964d2be646d726 # v0.10.0
-        with:
-          suffix: ${{ matrix.type }}-${{ matrix.flavor }}-${{ github.run_id }}-${{ github.run_attempt }}
+  test-deploy:
+    needs: flavor-test
+    strategy:
+      fail-fast: false
+      matrix:
+        type: [install, upgrade]
+        flavor: [upstream, unicorn, registry1]
+    uses: defenseunicorns/uds-common/.github/workflows/callable-test.yaml@243-update-uds-common-gh-actions-to-use-maruuds-run-conditionals
+    with:
+      upgrade-flavors: ${{ needs.flavor-test.outputs.upgrade-flavors }}
+      flavor: ${{ matrix.flavor }}
+      type: ${{ matrix.type }}
+      udsCommonVersion: 243-update-uds-common-gh-actions-to-use-maruuds-run-conditionals
+    secrets: inherit # Inherits all secrets from the parent workflow.

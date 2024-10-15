@@ -44,4 +44,4 @@ component-definition:
       - uuid: cd4382c0-6df1-4ace-8681-29c497060c69
         title: UDS Package Postgres Operator
         rlinks:
-          - href: https://github.com/defenseunicorns/uds-package-valkey
+          - href: https://github.com/defenseunicorns/uds-package-postgres-operator

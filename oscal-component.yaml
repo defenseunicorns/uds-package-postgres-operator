@@ -21,7 +21,7 @@ component-definition:
       title: Postgres Operator
       description: |
         The Postgres operator manages PostgreSQL database clusters on Kubernetes (K8s) using the Zalando Postgres Operator
-      purpose: Provides other application a PostgreSQL database for storing relational data.
+      purpose: Provides other applications a PostgreSQL database for storing relational data.
       responsible-roles:
         - role-id: provider
           party-uuids:

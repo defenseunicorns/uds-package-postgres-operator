@@ -1,6 +1,6 @@
 # 🏭 UDS Postgres Operator Package
 
-[<img alt="Made for UDS" src="https://raw.githubusercontent.com/defenseunicorns/uds-common/main/docs/made-for-uds.svg" height="20px"/>](https://github.com/defenseunicorns/uds-core)
+[<img alt="Made for UDS" src="https://raw.githubusercontent.com/defenseunicorns/uds-common/refs/heads/main/docs/assets/made-for-uds-silver.svg" height="20px"/>](https://github.com/defenseunicorns/uds-core)
 [![Latest Release](https://img.shields.io/github/v/release/defenseunicorns/uds-package-postgres-operator)](https://github.com/defenseunicorns/uds-package-postgres-operator/releases)
 [![Build Status](https://img.shields.io/github/actions/workflow/status/defenseunicorns/uds-package-postgres-operator/release.yaml)](https://github.com/defenseunicorns/uds-package-postgres-operator/actions/workflows/release.yaml)
 [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/defenseunicorns/uds-package-postgres-operator/badge)](https://api.securityscorecards.dev/projects/github.com/defenseunicorns/uds-package-postgres-operator)
@@ -9,18 +9,7 @@ This package is designed for use as part of a [UDS Software Factory](https://git
 
 ## Prerequisites
 
-- [K3D](https://k3d.io/) for dev & test environments or any [CNCF Certified Kubernetes Cluster](https://www.cncf.io/training/certification/software-conformance/#logos) for production environments.
-
-- [UDS CLI](https://github.com/defenseunicorns/uds-cli?tab=readme-ov-file#install) v0.9.2 or later
-
-## Flavors
-
-| Flavor | Description | Example Creation |
-| ------ | ----------- | ---------------- |
-| upstream | Uses upstream images within the package. | `uds zarf package create . -f upstream` |
-| registry1 | Uses images from registry1.dso.mil within the package. | `uds zarf package create . -f registry1` |
-
-Note: the registry1 flavor uses `ghcr.io/zalando/spilo-15:3.0-p1` published from GHCR as there is not a spilo image in Iron Bank
+This package requires a Kubernetes Cluster providing a Storage Class that has [UDS Core](https://github.com/defenseunicorns/uds-core) installed into it.  You can learn more about configuring this package in the [configuration documentation](./docs/configuration.md)
 
 ## Releases
 
@@ -40,4 +29,4 @@ Please see the [CONTRIBUTING.md](./CONTRIBUTING.md)
 
 ## Development
 
-When developing this package it is ideal to utilize the json schemas for UDS Bundles, Zarf Packages and Maru Tasks. This involves configuring your IDE to provide schema validation for the respective files used by each application. For guidance on how to set up this schema validation, please refer to the [guide](https://github.com/defenseunicorns/uds-common/blob/main/docs/development-ide-configuration.md) in uds-common.
+When developing this package it is ideal to utilize the json schemas for UDS Bundles, Zarf Packages and Maru Tasks. This involves configuring your IDE to provide schema validation for the respective files used by each application. For guidance on how to set up this schema validation, please refer to the [guide](https://github.com/defenseunicorns/uds-common/blob/main/docs/uds-packages/development/development-ide-configuration.md) in uds-common.

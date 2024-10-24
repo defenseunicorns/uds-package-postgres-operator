@@ -41,7 +41,7 @@ components:
             maxTotalSeconds: 300
             cmd: |
               if [ ./zarf tools kubectl get packages.uds.dev -n postgres ]; then
-                 ./zarf tools kubectl get packages.uds.dev -n postgres
+                 ./zarf tools wait-for packages.uds.dev -n postgres
               fi
           - description: Postgres Operator to be Healthy
             maxTotalSeconds: 90

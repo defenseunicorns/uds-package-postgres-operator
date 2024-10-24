@@ -37,6 +37,12 @@ components:
                 name: postgres-operator
                 namespace: postgres-operator
                 condition: "'{.status.phase}'=Ready"
+          - description: Validate Postgres Package
+            maxTotalSeconds: 300
+            cmd: |
+              if [ ./zarf tools kubectl get packages.uds.dev -n postgres ]; then
+                 ./zarf tools kubectl get packages.uds.dev -n postgres
+              fi
           - description: Postgres Operator to be Healthy
             maxTotalSeconds: 90
             wait:

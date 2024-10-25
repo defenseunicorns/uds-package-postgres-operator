@@ -43,7 +43,7 @@ components:
       - registry1.dso.mil/ironbank/opensource/zalando/pgbouncer:1.21.0
       # Docker image that provides PostgreSQL and Patroni bundled together for PostgreSQL HA
       - ghcr.io/zalando/spilo-15:3.2-p1
-      # Container iamge that provides the postgres-exporter sidecar to create a metrics endpoint
+      # Container image that provides the postgres-exporter sidecar to create a metrics endpoint
       - registry1.dso.mil/ironbank/opensource/prometheus/postgres-exporter:v0.15.0
 
   - name: postgres-operator
@@ -65,5 +65,27 @@ components:
       - docker.io/bitnami/pgbouncer:1.23.1
       # Docker image that provides PostgreSQL and Patroni bundled together for PostgreSQL HA
       - ghcr.io/zalando/spilo-15:3.2-p1
-      # Container iamge that provides the postgres-exporter sidecar to create a metrics endpoint
+      # Container image that provides the postgres-exporter sidecar to create a metrics endpoint
       - quay.io/prometheuscommunity/postgres-exporter:v0.15.0
+
+  - name: postgres-operator
+    required: true
+    only:
+      flavor: unicorn
+    import:
+      path: common
+    charts:
+      - name: postgres-operator
+        valuesFiles:
+          - ./values/unicorn-values.yaml
+      - name: uds-postgres-config
+        valuesFiles:
+          - ./values/unicorn-config-values.yaml
+    images:
+      - cgr.dev/du-uds-defenseunicorns/postgres-operator-fips:1.13.0
+      - ghcr.io/zalando/postgres-operator/logical-backup:v1.13.0
+      - cgr.dev/du-uds-defenseunicorns/pgbouncer-fips:1.22.1
+      # Docker image that provides PostgreSQL and Patroni bundled together for PostgreSQL HA
+      - ghcr.io/zalando/spilo-15:3.2-p1
+      # Container image that provides the postgres-exporter sidecar to create a metrics endpoint
+      - cgr.dev/du-uds-defenseunicorns/prometheus-postgres-exporter-fips:0.15.0

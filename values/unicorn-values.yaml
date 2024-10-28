@@ -4,6 +4,7 @@
 image:
   registry: cgr.dev
   repository: du-uds-defenseunicorns/postgres-operator-fips
+  tag: "1.13.0"
 configConnectionPooler:
   connection_pooler_image: "cgr.dev/du-uds-defenseunicorns/pgbouncer-fips:1.22.1"
 configLogicalBackup:

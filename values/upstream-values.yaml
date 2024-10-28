@@ -4,6 +4,7 @@
 image:
   registry: ghcr.io
   repository: zalando/postgres-operator
+  tag: v1.13.0
 configConnectionPooler:
   connection_pooler_image: "docker.io/bitnami/pgbouncer:1.23.1"
 configLogicalBackup:

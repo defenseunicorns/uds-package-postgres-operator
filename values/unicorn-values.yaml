@@ -2,11 +2,11 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later OR LicenseRef-Defense-Unicorns-Commercial
 
 image:
-  registry: ghcr.io
-  repository: zalando/postgres-operator
-  tag: v1.13.0
+  registry: cgr.dev
+  repository: du-uds-defenseunicorns/postgres-operator-fips
+  tag: "1.13.0"
 configConnectionPooler:
-  connection_pooler_image: "docker.io/bitnami/pgbouncer:1.23.1"
+  connection_pooler_image: "cgr.dev/du-uds-defenseunicorns/pgbouncer-fips:1.22.1"
 configLogicalBackup:
   logical_backup_docker_image: "ghcr.io/zalando/postgres-operator/logical-backup:v1.13.0"
 configGeneral:

@@ -4,6 +4,7 @@
 image:
   registry: registry1.dso.mil
   repository: ironbank/opensource/zalando/postgres-operator
+  tag: v1.13.0
 configConnectionPooler:
   connection_pooler_image: "registry1.dso.mil/ironbank/opensource/zalando/pgbouncer:1.21.0"
 configLogicalBackup:

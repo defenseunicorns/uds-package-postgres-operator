@@ -40,7 +40,7 @@ components:
           - description: Validate Postgres Package
             maxTotalSeconds: 300
             cmd: |
-              if [ ./zarf tools kubectl get packages.uds.dev -n postgres ]; then
+              if ./zarf tools kubectl get packages.uds.dev -n postgres; then
                  ./zarf tools wait-for packages.uds.dev -n postgres '{.status.phase}'=Ready
               fi
           - description: Postgres Operator to be Healthy

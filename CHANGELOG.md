@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.13.0-uds.3](https://github.com/defenseunicorns/uds-package-postgres-operator/compare/v1.13.0-uds.2...v1.13.0-uds.3) (2024-10-28)
+
+
+### Features
+
+* add unicorn flavor ([#77](https://github.com/defenseunicorns/uds-package-postgres-operator/issues/77)) ([3f740e3](https://github.com/defenseunicorns/uds-package-postgres-operator/commit/3f740e3f94a26b6c2b06c15e5c225ce56594c860))
+
+
+### Bug Fixes
+
+* postgress-operator validation ([#67](https://github.com/defenseunicorns/uds-package-postgres-operator/issues/67)) ([133a1c7](https://github.com/defenseunicorns/uds-package-postgres-operator/commit/133a1c7f28b74756f558c65a2d99345271dc8ce7))
+* validate package with full resource name ([#69](https://github.com/defenseunicorns/uds-package-postgres-operator/issues/69)) ([ad69811](https://github.com/defenseunicorns/uds-package-postgres-operator/commit/ad6981150033aac60d59c1686170161a512952df))
+
+
+### Miscellaneous
+
+* **deps:** update package-deps to v1.13.0 ([#72](https://github.com/defenseunicorns/uds-package-postgres-operator/issues/72)) ([3648417](https://github.com/defenseunicorns/uds-package-postgres-operator/commit/3648417eadc11b246f58ff3e42e5a984d4272936))
+* **deps:** update postgres support dependencies ([#60](https://github.com/defenseunicorns/uds-package-postgres-operator/issues/60)) ([10fb7c4](https://github.com/defenseunicorns/uds-package-postgres-operator/commit/10fb7c4aa93b582b5bf260b6e41227595ea45ec4))
+* **deps:** update support-deps to v1 ([#70](https://github.com/defenseunicorns/uds-package-postgres-operator/issues/70)) ([babace2](https://github.com/defenseunicorns/uds-package-postgres-operator/commit/babace2ee72587f2438aa584ec352061e54b5414))
+* **deps:** update support-deps to v1.1.2 ([#73](https://github.com/defenseunicorns/uds-package-postgres-operator/issues/73)) ([e578edd](https://github.com/defenseunicorns/uds-package-postgres-operator/commit/e578edd3ab97870d86157dbcbaf1bb971001801b))
+* set fail-fast to true on test matrix ([#76](https://github.com/defenseunicorns/uds-package-postgres-operator/issues/76)) ([575f539](https://github.com/defenseunicorns/uds-package-postgres-operator/commit/575f53966e747fa57642cd86b5351da57953618d))
+* silver badge, streamline the README and GH permissions ([#75](https://github.com/defenseunicorns/uds-package-postgres-operator/issues/75)) ([14f4536](https://github.com/defenseunicorns/uds-package-postgres-operator/commit/14f45364a875f7873087654aa6a3c778e16d3f75))
+
 ## [1.13.0-uds.2](https://github.com/defenseunicorns/uds-package-postgres-operator/compare/v1.13.0-uds.1...v1.13.0-uds.2) (2024-09-25)
 
 

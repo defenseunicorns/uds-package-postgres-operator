@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.13.0-uds.4](https://github.com/defenseunicorns/uds-package-postgres-operator/compare/v1.13.0-uds.3...v1.13.0-uds.4) (2024-11-04)
+
+
+### Features
+
+* tls certificate from secret ([#79](https://github.com/defenseunicorns/uds-package-postgres-operator/issues/79)) ([6f43464](https://github.com/defenseunicorns/uds-package-postgres-operator/commit/6f43464a2827e6937d3f5027e5e6efdd5c19483f))
+
+
+### Miscellaneous
+
+* **deps:** update postgres support dependencies ([#74](https://github.com/defenseunicorns/uds-package-postgres-operator/issues/74)) ([a7dbb04](https://github.com/defenseunicorns/uds-package-postgres-operator/commit/a7dbb04902ed3e913347615094dabb4d45c002f3))
+
 ## [1.13.0-uds.3](https://github.com/defenseunicorns/uds-package-postgres-operator/compare/v1.13.0-uds.2...v1.13.0-uds.3) (2024-10-28)
 
 

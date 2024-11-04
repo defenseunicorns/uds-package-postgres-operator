@@ -32,6 +32,15 @@ spec:
     - {{ . | toYaml | nindent 6 }}
     {{- end }}
   {{- end }}
+  {{- with .Values.postgresql.tls }}
+  {{- if .secretName }}
+  tls:
+    secretName: {{ .secretName }}
+    {{- if .caSecretName }}
+    caSecretName: {{ .caSecretName }}
+    {{- end }}
+  {{- end }}
+  {{- end }}
   sidecars:
     - name: "exporter"
       image: {{ .Values.metrics.image | quote }}

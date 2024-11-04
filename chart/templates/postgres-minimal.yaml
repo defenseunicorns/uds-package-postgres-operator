@@ -32,6 +32,10 @@ spec:
     - {{ . | toYaml | nindent 6 }}
     {{- end }}
   {{- end }}
+  {{- if .Values.postgresql.tls }}
+  tls:
+    {{- toYaml .Values.postgresql.tls | nindent 4 }}
+  {{- end }}
   sidecars:
     - name: "exporter"
       image: {{ .Values.metrics.image | quote }}

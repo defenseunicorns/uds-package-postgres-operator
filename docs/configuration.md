@@ -22,8 +22,7 @@ Postgres Operator is configured through [`acid.zalan.do/v1` `Postgresql` custom 
 - `postgresql.ingress`: A list of ingress entries to create for this cluster (follows the [custom networking definition](https://github.com/defenseunicorns/uds-software-factory/blob/main/docs/networking.md) except for `direction` which is always `Ingress` and `selector` which is always `cluster-name: pg-cluster`)
 - `postgresql.resources`: A Kubernetes Pod resource specification to define requests and limits
 - `postgresql.additionalVolumes`: A list of additional volumes to map into the Postgres container if needed (see below)
-- `postgresql.tls.secretName`: Name of the secret containing the TLS cert for Postgres to use (optional)
-- `postgresql.tls.caSecretName`: Name of the secret containing the TLS CA cert for Postgres to use (optional, only takes effect if `postgresql.tls.secretName` is set)
+- `postgresql.tls`: TLS configuration for the Postgres cluster to use (follows the [`tls` section of the Zalando Postgres CR](https://github.com/zalando/postgres-operator/blob/master/docs/reference/cluster_manifest.md#custom-tls-certificates))
 
 ## Postgres HugePages
 

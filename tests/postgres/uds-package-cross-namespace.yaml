@@ -11,7 +11,7 @@ spec:
     allow:
       - direction: Egress
         selector:
-          app.kubernetes.io/name: postgres-operator
+          job-name: db-seed-job
         remoteNamespace: postgres
         remoteSelector:
           cluster-name: pg-cluster

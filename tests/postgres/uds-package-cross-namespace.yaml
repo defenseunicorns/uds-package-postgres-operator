@@ -1,0 +1,17 @@
+# Copyright 2024 Defense Unicorns
+# SPDX-License-Identifier: AGPL-3.0-or-later OR LicenseRef-Defense-Unicorns-Commercial
+
+apiVersion: uds.dev/v1alpha1
+kind: Package
+metadata:
+  name: gitlab
+  namespace: gitlab
+spec:
+  network:
+    allow:
+      - direction: Egress
+        selector:
+          app.kubernetes.io/name: postgres-operator
+        remoteNamespace: postgres
+        remoteSelector:
+          cluster-name: pg-cluster

@@ -10,11 +10,6 @@ metadata:
   # x-release-please-end
 
 packages:
-  # this sets up the namespaces that we will need in order to configure the default databases (and corresponding secrets) that are setup below
-  - name: dev-namespaces
-    path: ../
-    ref: 0.1.0
-
   - name: postgres-operator
     path: ../
     # x-release-please-start-version

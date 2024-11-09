@@ -14,6 +14,9 @@ includes:
   - upgrade: https://raw.githubusercontent.com/defenseunicorns/uds-common/v1.2.2/tasks/upgrade.yaml
   - compliance: https://raw.githubusercontent.com/defenseunicorns/uds-common/v1.2.2/tasks/compliance.yaml
 
+auth:
+  raw.githubusercontent.com: $GITHUB_TOKEN
+
 tasks:
   - name: default
     description: Create K3D Cluster with UDS-Core (Dev) and Postgres Operator
@@ -34,7 +37,6 @@ tasks:
     actions:
       - task: create:test-bundle
       - task: deploy:test-bundle
-      - task: setup:create-doug-user
       - task: test:all
 
   - name: dev
@@ -63,7 +65,6 @@ tasks:
           dep_commands: ./uds run dependencies:create
       - task: setup:k3d-test-cluster
       - task: deploy:test-bundle
-      - task: setup:create-doug-user
       - task: compliance:validate
       - task: create-dev-package
       - task: create-deploy-test-bundle

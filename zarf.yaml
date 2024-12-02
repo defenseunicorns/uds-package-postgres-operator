@@ -44,7 +44,7 @@ components:
       # Docker image that provides PostgreSQL and Patroni bundled together for PostgreSQL HA
       - ghcr.io/zalando/spilo-15:3.2-p1
       # Container image that provides the postgres-exporter sidecar to create a metrics endpoint
-      - registry1.dso.mil/ironbank/opensource/prometheus/postgres-exporter:v0.15.0
+      - registry1.dso.mil/ironbank/opensource/prometheus/postgres-exporter:v0.16.0
 
   - name: postgres-operator
     required: true
@@ -66,7 +66,7 @@ components:
       # Docker image that provides PostgreSQL and Patroni bundled together for PostgreSQL HA
       - ghcr.io/zalando/spilo-15:3.2-p1
       # Container image that provides the postgres-exporter sidecar to create a metrics endpoint
-      - quay.io/prometheuscommunity/postgres-exporter:v0.15.0
+      - quay.io/prometheuscommunity/postgres-exporter:v0.16.0
 
   - name: postgres-operator
     required: true
@@ -88,4 +88,4 @@ components:
       # Docker image that provides PostgreSQL and Patroni bundled together for PostgreSQL HA
       - ghcr.io/zalando/spilo-15:3.2-p1
       # Container image that provides the postgres-exporter sidecar to create a metrics endpoint
-      - cgr.dev/du-uds-defenseunicorns/prometheus-postgres-exporter-fips:0.15.0
+      - cgr.dev/du-uds-defenseunicorns/prometheus-postgres-exporter-fips:0.16.0

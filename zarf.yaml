@@ -7,7 +7,7 @@ metadata:
   description: "A deployment of zalando postgres operator"
   url: https://github.com/zalando/postgres-operator
   # x-release-please-start-version
-  version: "1.13.0-uds.4"
+  version: "1.13.0-uds.5"
   # x-release-please-end
 
 components:

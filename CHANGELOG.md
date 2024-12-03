@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.13.0-uds.5](https://github.com/defenseunicorns/uds-package-postgres-operator/compare/v1.13.0-uds.4...v1.13.0-uds.5) (2024-12-02)
+
+
+### Features
+
+* handle namespaces internally without a shim package ([#80](https://github.com/defenseunicorns/uds-package-postgres-operator/issues/80)) ([35512ab](https://github.com/defenseunicorns/uds-package-postgres-operator/commit/35512abe8d0124a09d70c77b33411ba35c77ea90))
+
+
+### Miscellaneous
+
+* **deps:** update package-deps to v17 ([#19](https://github.com/defenseunicorns/uds-package-postgres-operator/issues/19)) ([d442085](https://github.com/defenseunicorns/uds-package-postgres-operator/commit/d442085a48d12e93e8f102e3611981d2c34fd53b))
+* **deps:** update prometheus postgres exporter to v0.16.0 ([#81](https://github.com/defenseunicorns/uds-package-postgres-operator/issues/81)) ([dd24e9b](https://github.com/defenseunicorns/uds-package-postgres-operator/commit/dd24e9bfbca0f39250e9c32a0857cf0a35b699b9))
+* update CODEOWNERS file ([#84](https://github.com/defenseunicorns/uds-package-postgres-operator/issues/84)) ([50d805f](https://github.com/defenseunicorns/uds-package-postgres-operator/commit/50d805f185acc854dc1d902b17b950dc42b81f89))
+* update README.md ([#82](https://github.com/defenseunicorns/uds-package-postgres-operator/issues/82)) ([cd4e709](https://github.com/defenseunicorns/uds-package-postgres-operator/commit/cd4e70978374639282212d18f430271be77bdcfe))
+
 ## [1.13.0-uds.4](https://github.com/defenseunicorns/uds-package-postgres-operator/compare/v1.13.0-uds.3...v1.13.0-uds.4) (2024-11-04)
 
 

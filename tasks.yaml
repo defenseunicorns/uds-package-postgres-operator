@@ -58,8 +58,6 @@ tasks:
     actions:
       - task: upgrade:create-latest-tag-bundle
         with:
-          # TODO: @WSTARR - remove after next release
-          dep_commands: ./uds run dependencies:create
       - task: setup:k3d-test-cluster
       - task: deploy:test-bundle
       - task: compliance:validate

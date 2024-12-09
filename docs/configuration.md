@@ -6,7 +6,7 @@ Postgres Operator is configured through the upstream [Zalando Postgres Operator 
 
 Network policies are controlled via the `uds-postgres-config` chart in accordance with the [common patterns for networking within UDS Software Factory](https://github.com/defenseunicorns/uds-software-factory/blob/main/docs/networking.md).  Because Postgres does not interact with external resources like object storage it only implements `custom` networking for the `postgres-operator` namespace:
 
-- `custom`: sets custom network policies for the `postgres-operator` namespace (as a break glass in case you deploy your own postgres cluster custom resources - see below)
+- `additionalNetworkAllow`: sets custom network policies for the `postgres-operator` namespace (as a break glass in case you deploy your own postgres cluster custom resources - see below)
 
 ## Postgres Clusters
 

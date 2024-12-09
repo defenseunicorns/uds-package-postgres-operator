@@ -24,7 +24,7 @@ spec:
         remoteGenerated: KubeAPI
 
       # Custom rules for other scenarios (such as connecting to a non-default pg cluster)
-      {{- range .Values.custom }}
+      {{- range .Values.additionalNetworkAllow }}
       - direction: {{ .direction }}
         selector:
           {{ .selector | toYaml | nindent 10 }}

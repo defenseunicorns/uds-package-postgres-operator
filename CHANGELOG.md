@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-uds.5](https://github.com/defenseunicorns/uds-package-postgres-operator/compare/v1.13.0-uds.5...v2.0.0-uds.5) (2024-12-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* update custom network properties key ([#87](https://github.com/defenseunicorns/uds-package-postgres-operator/issues/87))
+
+### Miscellaneous
+
+* update custom network properties key ([#87](https://github.com/defenseunicorns/uds-package-postgres-operator/issues/87)) ([b87dd9a](https://github.com/defenseunicorns/uds-package-postgres-operator/commit/b87dd9a4feb39c1ea6bc435143e382b6d75da469))
+
 ## [1.13.0-uds.5](https://github.com/defenseunicorns/uds-package-postgres-operator/compare/v1.13.0-uds.4...v1.13.0-uds.5) (2024-12-02)
 
 

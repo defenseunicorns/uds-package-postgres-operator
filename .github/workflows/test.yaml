@@ -6,7 +6,7 @@ name: Test
 on:
   # This workflow is triggered on pull requests to the main branch.
   pull_request:
-    # milestoned is added here as a workaround for release-please not triggering PR workflows (PRs should be added to a milestone to trigger the workflow).
+    # milestoned is added here as a way to retrigger workflows that are stuck or otherwise didn't run correctly
     types: [milestoned, opened, reopened, synchronize]
     paths-ignore:
       - "**.md"
@@ -18,8 +18,7 @@ on:
       - docs/**
       - .gitignore
       - renovate.json
-      - .release-please-config.json
-      - release-please-config.json
+      - releaser.yaml
       - CODEOWNERS
       - LICENSE
       - CONTRIBUTING.md
@@ -44,7 +43,7 @@ jobs:
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
       - name: test-flavor
-        uses: defenseunicorns/uds-common/.github/actions/test-flavor@d59b1c601730bfa7ab76439643242358e529603e # v1.2.2
+        uses: defenseunicorns/uds-common/.github/actions/test-flavor@a94be6798ba20e2d23fe16afc6578e442e55fb0a # v1.5.1
         id: test-flavor
     outputs:
       upgrade-flavors: ${{ steps.test-flavor.outputs.upgrade-flavors }}
@@ -56,9 +55,10 @@ jobs:
       matrix:
         type: [install, upgrade]
         flavor: [upstream, registry1, unicorn]
-    uses: defenseunicorns/uds-common/.github/workflows/callable-test.yaml@d59b1c601730bfa7ab76439643242358e529603e # v1.2.2
+    uses: defenseunicorns/uds-common/.github/workflows/callable-test.yaml@a94be6798ba20e2d23fe16afc6578e442e55fb0a # v1.5.1
     with:
       upgrade-flavors: ${{ needs.check-flavor.outputs.upgrade-flavors }}
       flavor: ${{ matrix.flavor }}
       type: ${{ matrix.type }}
+      runsOn: uds-swf-ubuntu-big-boy-4-core
     secrets: inherit # Inherits all secrets from the parent workflow.

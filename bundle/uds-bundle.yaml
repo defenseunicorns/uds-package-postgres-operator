@@ -41,7 +41,7 @@ packages:
                   - remoteNamespace: gitlab
             - name: ACID_PG_CLUSTER_NETWORKING
               description: "Allow connectivity to the acid pg cluster for testing (see tests/ folder)"
-              path: custom
+              path: additionalNetworkAllow
               default:
                 - direction: Egress
                   selector:

@@ -34,7 +34,7 @@ postgresql:
 #       remoteSelector:
 #         app.kubernetes.io/name: tempo
 
-custom: []
+additionalNetworkAllow: []
   # - direction: Egress
   #   selector:
   #     app.kubernetes.io/name: postgres-operator

@@ -45,9 +45,4 @@ components:
               fi
           - description: Postgres Operator to be Healthy
             maxTotalSeconds: 90
-            wait:
-              cluster:
-                kind: pod
-                name: app.kubernetes.io/name=postgres-operator
-                namespace: postgres-operator
-                condition: Ready
+            cmd: ./zarf tools wait-for pod app.kubernetes.io/name=postgres-operator -n postgres-operator Ready

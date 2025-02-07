@@ -7,6 +7,12 @@ metadata:
   description: "A deployment of zalando postgres operator"
   url: https://github.com/zalando/postgres-operator
   version: "dev"
+  annotations:
+    title: Postgres Operator
+    description: PostgreSQL is a powerful, open source object-relational database system that uses and extends the SQL language combined with many features that safely store and scale the most complicated data workloads. PostgreSQL comes with many features aimed to help developers build applications, administrators to protect data integrity and build fault-tolerant environments, and help you manage your data no matter how big or small the dataset. In addition to being free and open source, PostgreSQL is highly extensible. For example, you can define your own data types, build out custom functions, even write code from different programming languages without recompiling your database!
+    categories: Databases,IT Management,Software Dev
+    keywords: Open Source Database,Object-Relational Database,SQL,Data Integrity,Fault-Tolerant,Data Management,Extensibility,Custom Data Types,Custom Functions,Scalability,Free and Open Source
+    tagline: **The World's Most Advanced Open Source Relational Database**
 
 components:
   # CRD lifecycle is managed outside of the main chart to support upgrades

@@ -1,31 +1,47 @@
 {
-    "enabled": true,
-    "forkProcessing": "enabled",
-    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-    "extends": [
-      "github>defenseunicorns/uds-common//config/renovate.json5",
-      ":semanticCommits",
-      ":semanticCommitTypeAll(chore)"
-    ],
-    "packageRules": [
-      {
-        "groupName": "Postgres Support Dependencies",
-        "labels": ["support-deps"],
-        "commitMessageTopic": "support-deps",
-        "packagePatterns": ["*"]
-      },
-      {
-        "groupName": "Postgres Package Dependencies",
-        "labels": ["package-deps"],
-        "commitMessageTopic": "package-deps",
-        "matchDatasources": ["docker", "helm", "git-tags"]
-      },
-      {
-        "groupName": "Postgres Package Dependencies",
-        "labels": ["package-deps"],
-        "commitMessageTopic": "package-deps",
-        "matchPackageNames": ["zalando/postgres-operator", "registry.opensource.zalan.do/acid/logical-backup", "registry.opensource.zalan.do/acid/postgres-operator"],
-        "allowedVersions": "/v.+/"
-      }
-    ]
-  }
+  "enabled": true,
+  "forkProcessing": "enabled",
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "github>defenseunicorns/uds-common//config/renovate.json5",
+    ":semanticCommits",
+    ":semanticCommitTypeAll(chore)"
+  ],
+  "packageRules": [
+    {
+      "groupName": "Postgres Support Dependencies",
+      "labels": [
+        "support-deps"
+      ],
+      "commitMessageTopic": "support-deps",
+      "matchPackageNames": [
+        "*"
+      ]
+    },
+    {
+      "groupName": "Postgres Package Dependencies",
+      "labels": [
+        "package-deps"
+      ],
+      "commitMessageTopic": "package-deps",
+      "matchDatasources": [
+        "docker",
+        "helm",
+        "git-tags"
+      ]
+    },
+    {
+      "groupName": "Postgres Package Dependencies",
+      "labels": [
+        "package-deps"
+      ],
+      "commitMessageTopic": "package-deps",
+      "matchPackageNames": [
+        "zalando/postgres-operator",
+        "registry.opensource.zalan.do/acid/logical-backup",
+        "registry.opensource.zalan.do/acid/postgres-operator"
+      ],
+      "allowedVersions": "/v.+/"
+    }
+  ]
+}

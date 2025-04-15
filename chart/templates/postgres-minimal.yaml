@@ -21,8 +21,12 @@ spec:
   patroni:
     {{- toYaml .Values.postgresql.patroni | nindent 4 }}
   postgresql:
+    {{- if ne (len .Values.postgresql.parameters) 0 }}
     parameters:
-      password_encryption: {{ .Values.postgresql.password_encryption | quote }}
+      {{- range .Values.postgresql.parameters }}
+      {{- .name | nindent 6 }}: {{ .value | quote }}
+      {{- end }}
+    {{- end }}
     version: {{ .Values.postgresql.version | quote }}
   resources:
     {{- toYaml .Values.postgresql.resources | nindent 4 }}

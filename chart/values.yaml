@@ -3,7 +3,7 @@
 
 postgresql:
   enabled: false
-  password_encryption: scram-sha-256
+  parameters: []
   ingress: []
   resources:
     limits:

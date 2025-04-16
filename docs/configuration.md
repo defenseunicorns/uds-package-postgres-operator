@@ -23,12 +23,14 @@ Postgres Operator is configured through [`acid.zalan.do/v1` `Postgresql` custom 
 - `postgresql.resources`: A Kubernetes Pod resource specification to define requests and limits
 - `postgresql.additionalVolumes`: A list of additional volumes to map into the Postgres container if needed (see below)
 - `postgresql.tls`: TLS configuration for the Postgres cluster to use (follows the [`tls` section of the Zalando Postgres CR](https://github.com/zalando/postgres-operator/blob/master/docs/reference/cluster_manifest.md#custom-tls-certificates))
-- `postgresql.parameters`: A list of database parameters to set as name/value pairs, if needed, e.g.:
+- `postgresql.parameters`: A list of database parameters to set as name/value pairs, if needed. `password_encryption` parameter defaults to `scram-sha-256` unless specifically overridden via parameters list.
 
 ```yaml
   parameters:
-    - name: password_encryption
-      value: scram-sha-256
+    - name: max_slot_wal_keep_size
+      value: 1GB
+    - name: <name>
+      value: <value>
 ```
 
 ## Postgres HugePages

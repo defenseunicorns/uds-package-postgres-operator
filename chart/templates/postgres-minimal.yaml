@@ -21,8 +21,22 @@ spec:
   patroni:
     {{- toYaml .Values.postgresql.patroni | nindent 4 }}
   postgresql:
+    {{- $defaultPasswordEncryptionName := "password_encryption" }}
+    {{- $defaultPasswordEncryptionValue := "scram-sha-256" }}
+    {{- $userParams := .Values.postgresql.parameters | default list }}
+    {{- $hasPasswordEncryption := false }}
+    {{- range $userParams }}
+      {{- if eq .name $defaultPasswordEncryptionName }}
+        {{- $hasPasswordEncryption = true }}
+      {{- end }}
+    {{- end }}
     parameters:
-      password_encryption: {{ .Values.postgresql.password_encryption | quote }}
+      {{- if not $hasPasswordEncryption }}
+      {{- $defaultPasswordEncryptionName | nindent 6 }}: {{ $defaultPasswordEncryptionValue | quote }}
+      {{- end }}
+      {{- range $userParams }}
+      {{- .name | nindent 6 }}: {{ .value | quote }}
+      {{- end }}
     version: {{ .Values.postgresql.version | quote }}
   resources:
     {{- toYaml .Values.postgresql.resources | nindent 4 }}

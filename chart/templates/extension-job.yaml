@@ -8,6 +8,7 @@ metadata:
   name: enable-extensions
   namespace: postgres
 spec:
+  ttlSecondsAfterFinished: 30
   template:
     spec:
       restartPolicy: OnFailure

@@ -3,3 +3,6 @@
 
 metrics:
   image: "registry1.dso.mil/ironbank/opensource/prometheus/postgres-exporter:v0.17.1"
+
+job: 
+  image: "ghcr.io/zalando/spilo-17:4.0-p2"

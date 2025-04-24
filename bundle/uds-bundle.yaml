@@ -32,6 +32,8 @@ packages:
                   gitlabdb: gitlab.gitlab
                   mattermostdb: mattermost.mattermost
                   sonarqubedb: sonarqube.sonarqube
+                extensions:
+                  gitlabdb: ["hstore"]
                 version: "14"
                 ingress:
                   - remoteNamespace: gitlab

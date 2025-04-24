@@ -25,6 +25,8 @@ postgresql:
 #   databases:
 #     mydb: mynamespace.myuser
 #     yourdb: yournamespace.youruser
+#   extensions:
+#     mydb: ["postgis","hstore"] # database extensions
 #   version: "14"
 #   ingress:
 #     - remoteGenerated: Anywhere

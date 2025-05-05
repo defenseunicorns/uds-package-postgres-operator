@@ -8,6 +8,8 @@ metadata:
   namespace: {{ .Release.Namespace }}
 spec:
   network:
+    serviceMesh:
+      mode: {{ if .Values.ambient }}ambient{{ else }}sidecar{{ end }}
     allow:
       {{- if .Values.postgresql.enabled }}
       - direction: Egress

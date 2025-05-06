@@ -9,6 +9,8 @@ metadata:
   namespace: postgres
 spec:
   network:
+    serviceMesh:
+      mode: {{ if .Values.ambient }}ambient{{ else }}sidecar{{ end }}
     allow:
       - direction: Ingress
         remoteGenerated: IntraNamespace

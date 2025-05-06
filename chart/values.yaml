@@ -15,6 +15,8 @@ postgresql:
   additionalVolumes: []
   env: []
 
+ambient: true
+
 #   teamId: "uds"
 #   volume:
 #     size: "1Gi"
@@ -25,6 +27,8 @@ postgresql:
 #   databases:
 #     mydb: mynamespace.myuser
 #     yourdb: yournamespace.youruser
+#   extensions:
+#     mydb: ["postgis","hstore"] # database extensions
 #   version: "14"
 #   ingress:
 #     - remoteGenerated: Anywhere

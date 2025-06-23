@@ -9,6 +9,13 @@ This package is designed for use as part of a [UDS Software Factory](https://git
 
 > The Postgres Operator is a software tool that automates the deployment and management of PostgreSQL databases on Kubernetes, simplifying the process of setting up and maintaining highly available and scalable PostgreSQL clusters.
 
+## Flavors
+
+| Flavor | Description | Example Creation |
+| ------ | ----------- | ---------------- |
+| upstream | Uses upstream images within the package. | `zarf package create . -f upstream` |
+| registry1 | Uses images from registry1.dso.mil within the package. | `zarf package create . -f registry1` |
+
 ## Prerequisites
 
 This package requires a Kubernetes Cluster providing a Storage Class that has [UDS Core](https://github.com/defenseunicorns/uds-core) installed into it.  You can learn more about configuring this package in the [configuration documentation](./docs/configuration.md)

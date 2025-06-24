@@ -1,0 +1,13 @@
+# Copyright 2024 Defense Unicorns
+# SPDX-License-Identifier: AGPL-3.0-or-later OR LicenseRef-Defense-Unicorns-Commercial
+
+image:
+  registry: cgr.dev
+  repository: du-uds-defenseunicorns/postgres-operator-fips
+  tag: "1.14.0"
+configConnectionPooler:
+  connection_pooler_image: "cgr.dev/du-uds-defenseunicorns/pgbouncer-fips:1.24.0"
+configLogicalBackup:
+  logical_backup_docker_image: "ghcr.io/zalando/postgres-operator/logical-backup:v1.14.0"
+configGeneral:
+  docker_image: "ghcr.io/zalando/spilo-17:4.0-p2"

@@ -92,4 +92,3 @@ components:
       - ghcr.io/zalando/spilo-17:4.0-p2
       # Container image that provides the postgres-exporter sidecar to create a metrics endpoint
       - cgr.dev/du-uds-defenseunicorns/prometheus-postgres-exporter-fips:0.17.1
-      

@@ -15,6 +15,7 @@ This package is designed for use as part of a [UDS Software Factory](https://git
 | ------ | ----------- | ---------------- |
 | upstream | Uses upstream images within the package. | `zarf package create . -f upstream` |
 | registry1 | Uses images from registry1.dso.mil within the package. | `zarf package create . -f registry1` |
+| unicorn | Uses chainguard images from cgr.dev | `zarf package create . -f unicorn` |
 
 ## Prerequisites
 

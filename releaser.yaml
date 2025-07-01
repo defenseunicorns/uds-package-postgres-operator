@@ -10,4 +10,4 @@ flavors:
     version: 1.14.0-uds.7
   - name: unicorn
     # renovate-uds: datasource=docker depName=cgr.dev/du-uds-defenseunicorns/postgres-operator-fips
-    version: 1.14.0-uds.7
+    version: 1.14.0-uds.8

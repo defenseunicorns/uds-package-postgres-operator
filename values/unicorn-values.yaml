@@ -10,4 +10,4 @@ configConnectionPooler:
 configLogicalBackup:
   logical_backup_docker_image: "quay.io/rfcurated/zalando/postgres-operator/logical-backup:1.14.0-jammy-scratch-fips-rfcurated"
 configGeneral:
-  docker_image: "ghcr.io/zalando/spilo-17:4.0-p2"
+  docker_image: "quay.io/rfcurated/zalando/spilo-17:4.0-p2-jammy-rfcurated"

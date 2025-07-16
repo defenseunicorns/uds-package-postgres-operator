@@ -36,6 +36,23 @@ components:
                 namespace: gitlab
                 condition: "'{.status.succeeded}'=1"
 
+  - name: test-bad-password
+    required: true
+    manifests:
+      - name: bad-password-test
+        files:
+          - postgres/bad-password-test.yaml
+    images:
+      - docker.io/postgres:17
+    actions:
+      onDeploy:
+        after:
+          - wait:
+              cluster:
+                kind: Job
+                name: bad-password-test
+                namespace: gitlab
+                condition: "'{.status.succeeded}'=1"
 
   - name: deploy-postgres-standalone
     required: true
@@ -54,6 +71,7 @@ components:
                 namespace: acid
                 condition: "'{.status.PostgresClusterStatus}'=Running"
             maxTotalSeconds: 600
+
   - name: test-standalone-postgres-deployment
     required: true
     manifests:

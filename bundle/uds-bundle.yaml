@@ -35,6 +35,9 @@ packages:
                 extensions:
                   gitlabdb: ["hstore"]
                 version: "14"
+                parameters:
+                  - name: log_rotation_age
+                    value: 2d
                 ingress:
                   - remoteNamespace: gitlab
             - name: ACID_PG_CLUSTER_NETWORKING

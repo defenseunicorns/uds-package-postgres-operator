@@ -18,24 +18,42 @@ spec:
     {{- toYaml .Values.postgresql.users | nindent 4 }} # database owner
   databases:
     {{- toYaml .Values.postgresql.databases | nindent 4 }}
-  patroni:
-    {{- toYaml .Values.postgresql.patroni | nindent 4 }}
-  postgresql:
-    {{- $defaultPasswordEncryptionName := "password_encryption" }}
-    {{- $defaultPasswordEncryptionValue := "scram-sha-256" }}
-    {{- $userParams := .Values.postgresql.parameters | default list }}
-    {{- $hasPasswordEncryption := false }}
-    {{- range $userParams }}
-      {{- if eq .name $defaultPasswordEncryptionName }}
-        {{- $hasPasswordEncryption = true }}
-      {{- end }}
+
+  {{- $passwordEncryption := "scram-sha-256" }}
+  {{- range .Values.postgresql.parameters | default list }}
+    {{- if eq .name "password_encryption" }}
+      {{- $passwordEncryption = .value }}
     {{- end }}
+  {{- end }}
+  patroni:
+    pg_hba:
+    {{- $defaultPgHba := list 
+        "local   all             all                                     trust"
+        "hostssl all             +zalandos            127.0.0.1/32       pam"
+        (printf "host    all             all                  127.0.0.1/32       %s" $passwordEncryption)
+        "hostssl all             +zalandos            ::1/128            pam"
+        (printf "host    all             all                  ::1/128            %s" $passwordEncryption)
+        "local   replication     standby                                 trust"
+        (printf "hostssl replication     standby all                             %s" $passwordEncryption)
+        "hostnossl all           all                  all                reject"
+        "hostssl all             +zalandos            all                pam"
+        (printf "hostssl all             all                  all                %s" $passwordEncryption)
+    }}
+    {{- if and (hasKey .Values.postgresql "patroni") (hasKey .Values.postgresql.patroni "pg_hba") }}
+      {{- toYaml .Values.postgresql.patroni.pg_hba | nindent 6 }}
+    {{- else }}
+      {{- toYaml $defaultPgHba | nindent 6 }}
+    {{- end }}
+    {{- with (omit (.Values.postgresql.patroni | default dict) "pg_hba") }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
+  postgresql:
     parameters:
-      {{- if not $hasPasswordEncryption }}
-      {{- $defaultPasswordEncryptionName | nindent 6 }}: {{ $defaultPasswordEncryptionValue | quote }}
-      {{- end }}
-      {{- range $userParams }}
-      {{- .name | nindent 6 }}: {{ .value | quote }}
+      password_encryption: {{ $passwordEncryption | quote }}
+      {{- range .Values.postgresql.parameters | default list }}
+        {{- if ne .name "password_encryption" }}
+        {{ .name }}: {{ .value | quote }}
+        {{- end }}
       {{- end }}
     version: {{ .Values.postgresql.version | quote }}
   resources:

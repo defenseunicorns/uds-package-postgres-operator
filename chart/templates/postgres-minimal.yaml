@@ -43,11 +43,11 @@ spec:
   postgresql:
     parameters:
       password_encryption: scram-sha-256
-      {{- range .Values.postgresql.parameters | default list }}
-        {{- if ne .name "password_encryption" }}
-        {{ .name }}: {{ .value | quote }}
-        {{- end }}
+    {{- range .Values.postgresql.parameters | default list }}
+      {{- if ne .name "password_encryption" }}
+      {{ .name }}: {{ .value | quote }}
       {{- end }}
+    {{- end }}
     version: {{ .Values.postgresql.version | quote }}
   resources:
     {{- toYaml .Values.postgresql.resources | nindent 4 }}

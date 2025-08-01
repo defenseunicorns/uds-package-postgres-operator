@@ -5,10 +5,10 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: enable-extensions
+  name: enable-extensions-{{ now | unixEpoch }}
   namespace: postgres
 spec:
-  ttlSecondsAfterFinished: 30
+  ttlSecondsAfterFinished: 5
   template:
     spec:
       restartPolicy: OnFailure

@@ -57,7 +57,6 @@ tasks:
     description: Test an upgrade from the latest released package to the current branch
     actions:
       - task: upgrade:create-latest-tag-bundle
-        with:
       - task: setup:k3d-test-cluster
       - task: deploy:test-bundle
       - task: compliance:validate

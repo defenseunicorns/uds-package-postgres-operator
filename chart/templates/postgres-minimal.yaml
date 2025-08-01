@@ -19,6 +19,9 @@ spec:
   databases:
     {{- toYaml .Values.postgresql.databases | nindent 4 }}
   patroni:
+    initdb:
+      auth-host: scram-sha-256
+      auth-local: trust
     pg_hba:
     {{- $defaultPgHba := list 
         "local   all             all                                     trust"

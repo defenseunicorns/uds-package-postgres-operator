@@ -8,6 +8,8 @@ metadata:
   namespace: gitlab
 spec:
   network:
+    serviceMesh:
+      mode: ambient
     allow:
       - direction: Egress
         selector:

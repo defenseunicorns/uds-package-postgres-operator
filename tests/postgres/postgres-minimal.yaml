@@ -21,16 +21,16 @@ spec:
       auth-host: scram-sha-256
       auth-local: trust
     pg_hba:
-    - local   all             all                                   trust
-    - hostssl all             +zalandos    127.0.0.1/32       pam
-    - host    all             all                127.0.0.1/32       scram-sha-256
-    - hostssl all             +zalandos    ::1/128            pam
-    - host    all             all                ::1/128            scram-sha-256
-    - local   replication     standby                    trust
-    - hostssl replication     standby all                scram-sha-256
-    - hostnossl all           all                all                reject
-    - hostssl all             +zalandos    all                pam
-    - hostssl all             all                all                scram-sha-256
+      - local   all             all                                   trust
+      - hostssl all             +zalandos    127.0.0.1/32       pam
+      - host    all             all                127.0.0.1/32       scram-sha-256
+      - hostssl all             +zalandos    ::1/128            pam
+      - host    all             all                ::1/128            scram-sha-256
+      - local   replication     standby                    trust
+      - hostssl replication     standby all                scram-sha-256
+      - hostnossl all           all                all                reject
+      - hostssl all             +zalandos    all                pam
+      - hostssl all             all                all                scram-sha-256
   teamId: "myteam"
   volume:
     size: 1Gi

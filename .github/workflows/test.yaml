@@ -8,21 +8,6 @@ on:
   pull_request:
     # milestoned is added here as a way to retrigger workflows that are stuck or otherwise didn't run correctly
     types: [milestoned, opened, reopened, synchronize]
-    paths-ignore:
-      - "**.md"
-      - "**.jpg"
-      - "**.png"
-      - "**.gif"
-      - "**.svg"
-      - adr/**
-      - docs/**
-      - .gitignore
-      - renovate.json
-      - releaser.yaml
-      - CODEOWNERS
-      - LICENSE
-      - CONTRIBUTING.md
-      - SECURITY.md
 
 # Permissions for the GITHUB_TOKEN used by the workflow.
 permissions:

@@ -7,7 +7,7 @@ metadata:
   description: "A deployment of zalando postgres operator"
   url: https://github.com/zalando/postgres-operator
   # x-release-please-start-version
-  version: "1.13.0-uds.5"
+  version: "1.14.0-uds.0"
   # x-release-please-end
 
 components:
@@ -42,7 +42,7 @@ components:
       - registry1.dso.mil/ironbank/opensource/zalando/logical-backup:v1.8.2
       - registry1.dso.mil/ironbank/opensource/zalando/pgbouncer:1.21.0
       # Docker image that provides PostgreSQL and Patroni bundled together for PostgreSQL HA
-      - ghcr.io/zalando/spilo-15:3.2-p1
+      - ghcr.io/zalando/spilo-17:4.0-p3
       # Container image that provides the postgres-exporter sidecar to create a metrics endpoint
       - registry1.dso.mil/ironbank/opensource/prometheus/postgres-exporter:v0.16.0
 
@@ -64,7 +64,7 @@ components:
       - ghcr.io/zalando/postgres-operator/logical-backup:v1.13.0
       - docker.io/bitnami/pgbouncer:1.23.1
       # Docker image that provides PostgreSQL and Patroni bundled together for PostgreSQL HA
-      - ghcr.io/zalando/spilo-15:3.2-p1
+      - ghcr.io/zalando/spilo-17:4.0-p3
       # Container image that provides the postgres-exporter sidecar to create a metrics endpoint
       - quay.io/prometheuscommunity/postgres-exporter:v0.16.0
 
@@ -86,6 +86,6 @@ components:
       - ghcr.io/zalando/postgres-operator/logical-backup:v1.13.0
       - cgr.dev/du-uds-defenseunicorns/pgbouncer-fips:1.22.1
       # Docker image that provides PostgreSQL and Patroni bundled together for PostgreSQL HA
-      - ghcr.io/zalando/spilo-15:3.2-p1
+      - ghcr.io/zalando/spilo-17:4.0-p3
       # Container image that provides the postgres-exporter sidecar to create a metrics endpoint
       - cgr.dev/du-uds-defenseunicorns/prometheus-postgres-exporter-fips:0.16.0

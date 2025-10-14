@@ -6,7 +6,7 @@ image:
   repository: zalando/postgres-operator
   tag: v1.14.0
 configConnectionPooler:
-  connection_pooler_image: "docker.io/bitnami/pgbouncer:1.24.1"
+  connection_pooler_image: "docker.io/bitnamilegacy/pgbouncer:1.24.1"
 configLogicalBackup:
   logical_backup_docker_image: "ghcr.io/zalando/postgres-operator/logical-backup:v1.14.0"
 configGeneral:

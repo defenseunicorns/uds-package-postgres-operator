@@ -18,6 +18,7 @@ Postgres Operator is configured through [`acid.zalan.do/v1` `Postgresql` custom 
 - `postgresql.numberOfInstances`: The number of cluster Pods to run in the cluster (i.e. `2`)
 - `postgresql.users`: The users to create for the database in the form `{namespace}.{username}` (i.e. `gitlab.gitlab: []`)
 - `postgresql.databases`: The database names to create and the users they map to (i.e. `gitlabdb: gitlab.gitlab`)
+- `postgresql.extensions`: A map of database names to lists of extensions to enable for that database (i.e. `mydb: ["postgis", "hstore"]`)
 - `postgresql.version`: The version of Postgres to run (i.e. `14`)
 - `postgresql.ingress`: A list of ingress entries to create for this cluster (follows the [custom networking definition](https://github.com/defenseunicorns/uds-software-factory/blob/main/docs/networking.md) except for `direction` which is always `Ingress` and `selector` which is always `cluster-name: pg-cluster`)
 - `postgresql.resources`: A Kubernetes Pod resource specification to define requests and limits
@@ -47,3 +48,35 @@ Postgres Operator can also support HugePages by setting the following keys appro
       emptyDir:
         medium: HugePages-2Mi
 ```
+
+## Postgres Extensions
+
+Postgres Operator supports enabling PostgreSQL extensions for specific databases using the `postgresql.extensions` configuration. Extensions are enabled via a Kubernetes Job that runs after the database cluster is created.
+
+- `postgresql.extensions`: A map of database names to arrays of extension names to enable
+
+Example:
+
+```yaml
+postgresql:
+  extensions:
+    mydb: ["postgis", "hstore", "pg_trgm"]
+    anotherdb: ["uuid-ossp", "pgcrypto"]
+```
+
+The Spilo PostgreSQL image includes 100+ extensions. You can view the complete list by running:
+
+```bash
+docker run --rm ghcr.io/zalando/spilo-17:4.0-p2 bash -c "ls -1 /usr/share/postgresql/17/extension/*.control | xargs -n1 basename | sed 's/.control$//' | sort"
+```
+
+> [!NOTE]
+> You may need to swap the above image to match the package flavor you are using.
+
+Commonly used extensions include:
+- **Spatial/GIS**: `postgis`, `address_standardizer`, `earthdistance`
+- **Data Types**: `hstore`, `citext`, `uuid-ossp`, `vector`, `ltree`
+- **Full Text Search**: `pg_trgm`, `fuzzystrmatch`, `unaccent`
+- **Crypto**: `pgcrypto`
+- **Time Series**: `timescaledb`
+- **Monitoring**: `pg_stat_statements`

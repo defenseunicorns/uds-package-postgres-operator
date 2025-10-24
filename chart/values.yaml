@@ -18,7 +18,7 @@ postgresql:
   env: []
 
 # Example values for postgresql
-# 
+#
 # postgresql:
 #   enabled: true
 #   teamId: "uds"

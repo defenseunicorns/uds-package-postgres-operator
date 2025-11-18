@@ -9,8 +9,17 @@
   ],
   "packageRules": [
     {
+      "matchDatasources": ["docker"],
+      "matchPackagePatterns": ["^quay\\.io/rfcurated/"],
+      "allowedVersions": "!/-arm64|-aarch64/"
+    },
+    {
       "matchPackageNames": ["quay.io/rfcurated/zalando/spilo-17"],
-      "versioning": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)-p(?<patch>\\d+)-jammy-fips-rfcurated$"
+      "versioning": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)-p(?<patch>\\d+)(-jammy-fips-rfcurated)?$"
+    },
+    {
+      "matchPackageNames": ["ghcr.io/zalando/spilo-17"],
+      "versioning": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)-p(?<patch>\\d+)$"
     },
     {
       "groupName": "Postgres Support Dependencies",

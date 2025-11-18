@@ -9,6 +9,10 @@
   ],
   "packageRules": [
     {
+      "matchPackageNames": ["quay.io/rfcurated/zalando/spilo-17"],
+      "versioning": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)-p(?<patch>\\d+)-jammy-fips-rfcurated$"
+    },
+    {
       "groupName": "Postgres Support Dependencies",
       "labels": [
         "support-deps"

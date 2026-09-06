@@ -62,6 +62,11 @@ packages:
             - path: kube-state-metrics.customResourceState.enabled
               value: true
 
+            - path: kube-state-metrics.metricLabelsAllowlist
+              value:
+                - namespaces=[istio-injection,istio.io/dataplane-mode]
+                - pods=[application,cluster-name,spilo-role,team]
+
             - path: kube-state-metrics.rbac.extraRules
               value:
                 - apiGroups: ["apiextensions.k8s.io"]

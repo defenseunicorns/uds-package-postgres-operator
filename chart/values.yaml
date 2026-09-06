@@ -54,3 +54,14 @@ additionalNetworkAllow: []
   #   remoteSelector:
   #     cluster-name: pg-cluster
   #   description: "Egress to a non-default pg cluster"
+monitoring:
+  # create custom PodMonitor (need to add podTargetLabels, uds-operator does not support this yet)
+  enabled: true
+  podTargetLabels:
+    - cluster-name
+    - spilo-role
+    - team
+  relabelings: []
+    # - action: replace
+    #   sourceLabels: [__meta_kubernetes_pod_label_cluster_name]
+    #   targetLabel: cluster_name

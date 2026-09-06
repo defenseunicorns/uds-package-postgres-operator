@@ -1,0 +1,23 @@
+# Copyright 2024 Defense Unicorns
+# SPDX-License-Identifier: AGPL-3.0-or-later OR LicenseRef-Defense-Unicorns-Commercial
+
+{{- if .Values.monitoring.enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: postgres-exporter-port
+  namespace: postgres
+spec:
+  selector:
+    matchLabels:
+      application: spilo
+  podTargetLabels:
+    {{- toYaml .Values.monitoring.podTargetLabels | nindent 4 }}
+  podMetricsEndpoints:
+    - port: exporter
+      path: /metrics
+      {{- if .Values.monitoring.relabelings }}
+      relabelings:
+        {{- toYaml .Values.monitoring.relabelings | nindent 8 }}
+      {{- end }}
+{{- end }}

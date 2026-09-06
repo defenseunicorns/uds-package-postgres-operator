@@ -51,3 +51,75 @@ packages:
                   remoteSelector:
                     cluster-name: pg-cluster
                   description: "Egress to a non-default pg cluster"
+
+  - name: core-monitoring
+    repository: ghcr.io/defenseunicorns/packages/uds/core-monitoring
+    ref: 1.11.1-upstream
+    overrides:
+      kube-prometheus-stack:
+        kube-prometheus-stack:
+          values:
+            - path: kube-state-metrics.customResourceState.enabled
+              value: true
+
+            - path: kube-state-metrics.rbac.extraRules
+              value:
+                - apiGroups: ["apiextensions.k8s.io"]
+                  resources: ["customresourcedefinitions"]
+                  verbs: ["list", "watch"]
+                - apiGroups: ["acid.zalan.do"]
+                  resources: ["postgresqls"]
+                  verbs: ["list", "watch"]
+
+            - path: kube-state-metrics.customResourceState.config
+              value:
+                kind: CustomResourceStateMetrics
+                spec:
+                  resources:
+                    - groupVersionKind:
+                        group: acid.zalan.do
+                        version: v1
+                        kind: postgresql
+                      labelsFromPath:
+                        namespace: [metadata, namespace]
+                        cluster_name: [metadata, name]
+                        team: [spec, teamId]
+                      metricNamePrefix: kube_customresource_postgresql
+                      metrics:
+                        - name: info
+                          help: "Zalando postgresql CR metadata"
+                          each:
+                            type: Info
+                            info:
+                              labelsFromPath:
+                                pg_version: [spec, postgresql, version]
+                                docker_image: [spec, dockerImage]
+                        - name: created
+                          each: { type: Gauge, gauge: { path: [metadata, creationTimestamp] } }
+                        - name: spec_instances
+                          each: { type: Gauge, gauge: { path: [spec, numberOfInstances] } }
+                        - name: spec_volume_size_bytes
+                          each: { type: Gauge, gauge: { path: [spec, volume, size] } }
+                        - name: spec_cpu_request_cores
+                          each: { type: Gauge, gauge: { nilIsZero: true, path: [spec, resources, requests, cpu] } }
+                        - name: spec_cpu_limit_cores
+                          each: { type: Gauge, gauge: { nilIsZero: true, path: [spec, resources, limits, cpu] } }
+                        - name: spec_memory_request_bytes
+                          each: { type: Gauge, gauge: { nilIsZero: true, path: [spec, resources, requests, memory] } }
+                        - name: spec_memory_limit_bytes
+                          each: { type: Gauge, gauge: { nilIsZero: true, path: [spec, resources, limits, memory] } }
+                        - name: spec_connection_pooler_enabled
+                          each: { type: Gauge, gauge: { nilIsZero: true, path: [spec, enableConnectionPooler] } }
+                        - name: spec_replica_connection_pooler_enabled
+                          each: { type: Gauge, gauge: { nilIsZero: true, path: [spec, enableReplicaConnectionPooler] } }
+                        - name: spec_logical_backup_enabled
+                          each: { type: Gauge, gauge: { nilIsZero: true, path: [spec, enableLogicalBackup] } }
+                        - name: status
+                          each:
+                            type: StateSet
+                            stateSet:
+                              labelName: status
+                              path: [status, PostgresClusterStatus]
+                              list: ["Running","Creating","Updating","Syncing","SyncFailed",
+                                     "CreateFailed","UpdateFailed","DeleteFailed","Deleting",
+                                     "Invalid","Adding"]
